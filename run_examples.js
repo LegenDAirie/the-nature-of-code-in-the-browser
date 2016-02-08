@@ -18,15 +18,19 @@
     // },
 
     updateMouseLocation: function(event) {
+      var rect = canvas.getBoundingClientRect();
+
       this.mouseLocation = {
-        x: event.x,
-        y: event.y
+        x: Math.round((event.clientX-rect.left)/(rect.right-rect.left)*canvas.width),
+        y: Math.round((event.clientY-rect.top)/(rect.bottom-rect.top)*canvas.height)
+        // x: event.x,
+        // y: event.y
       };
     },
 
     handleWindowResize: function () {
-      WIDTH = window.innerWidth;
-      HEIGHT = window.innerHeight;
+      WIDTH = window.innerWidth / 2;
+      HEIGHT = window.innerHeight / 2;
 
       canvas.setAttribute('height', HEIGHT);
       canvas.setAttribute('width', WIDTH);
