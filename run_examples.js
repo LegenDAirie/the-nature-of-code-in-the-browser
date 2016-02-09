@@ -29,8 +29,11 @@
     },
 
     handleWindowResize: function () {
-      WIDTH = window.innerWidth / 2;
-      HEIGHT = window.innerHeight / 2;
+      // debugger
+      WIDTH = window.innerWidth;
+      HEIGHT = window.innerHeight;
+      // WIDTH = canvas.clientWidth;
+      // HEIGHT = canvas.clientHeight;
 
       canvas.setAttribute('height', HEIGHT);
       canvas.setAttribute('width', WIDTH);

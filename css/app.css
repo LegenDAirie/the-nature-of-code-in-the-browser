@@ -5,14 +5,16 @@ html, body, canvas {
 }
 
 body {
-    background-color: black;
+    /*background-color: black;*/
 }
 canvas {
-  background: white;
+  border: 1px black solid;
+  /*background: white;
   padding-left: auto;
   padding-right: auto;
-  margin-left: 0%; <------- yes!
+  margin-left: auto; <------- yes!
   margin-right: auto;
   display: block;
-  /*width: 800px;*/
+  width: 800px;*/
+  /*width: 50%;*/
 }
