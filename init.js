@@ -3,13 +3,13 @@
 var WIDTH = window.innerWidth;
 var HEIGHT = window.innerHeight;
 
-var canvas = document.getElementById("canvas");
-canvas.setAttribute('height', HEIGHT);
-canvas.setAttribute('width', WIDTH);
+var iframeWindow = document.getElementById("vector_subtraction");
+iframeWindow.setAttribute('height', HEIGHT);
+iframeWindow.setAttribute('width', WIDTH);
 
-var context = canvas.getContext('2d');
-context.fillStyle = "white";
-context.fill()
-
-var runExamples = RunExamples.create()
-runExamples.start()
+// var context = canvas.getContext('2d');
+// context.fillStyle = "white";
+// context.fill()
+//
+// var runExamples = RunExamples.create()
+// runExamples.start()

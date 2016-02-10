@@ -5,7 +5,7 @@
   /* PRETTY MUCH A METATABLE FROM LUA */
   var RUN_EXAMPLES_PROTOTYPE = {
     start: function () {
-      // setInterval(this.tick.bind(this), 1000/60);
+      setInterval(this.tick.bind(this), 1000/60);
       canvas.addEventListener("mousemove", this.updateMouseLocation.bind(this));
       window.addEventListener("resize", this.handleWindowResize)
 
@@ -13,18 +13,18 @@
       vector_subtraction_example.start()
     },
 
-    // tick: function () {
-    //
-    // },
+    tick: function () {
+
+    },
 
     updateMouseLocation: function(event) {
       var rect = canvas.getBoundingClientRect();
 
       this.mouseLocation = {
-        x: Math.round((event.clientX-rect.left)/(rect.right-rect.left)*canvas.width),
-        y: Math.round((event.clientY-rect.top)/(rect.bottom-rect.top)*canvas.height)
-        // x: event.x,
-        // y: event.y
+        // x: Math.round((event.clientX-rect.left)/(rect.right-rect.left)*canvas.width),
+        // y: Math.round((event.clientY-rect.top)/(rect.bottom-rect.top)*canvas.height)
+        x: event.x,
+        y: event.y
       };
     },
 
