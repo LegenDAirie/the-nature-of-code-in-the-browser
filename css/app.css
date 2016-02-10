@@ -1,4 +1,4 @@
-html, body, canvas {
+html, body {
   margin: 0;
   padding: 0;
   border: 0;
@@ -7,7 +7,7 @@ html, body, canvas {
 body {
     /*background-color: black;*/
 }
-canvas {
+#canvas {
   border: 1px black solid;
   /*background: white;
   padding-left: auto;
@@ -17,4 +17,5 @@ canvas {
   display: block;
   width: 800px;*/
   /*width: 50%;*/
+  /*display: inline;*/
 }
