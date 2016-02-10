@@ -18,6 +18,9 @@
       var mouse = self.mouseVector()
       var center = Vector.create(WIDTH / 2, HEIGHT / 2)
       var normalizedVector = mouse.subtract(center)
+      normalizedVector = normalizedVector.normalize()
+      normalizedVector = normalizedVector.multiply(50)
+
       // var newVector = mouse.sub
 
       context.translate(WIDTH / 2, HEIGHT /2)

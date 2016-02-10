@@ -4,7 +4,10 @@
   margin-left: 20px;
   margin-right: 10px;
   margin-bottom: 10px;
-  width: screen.width}
+  float: left;
+  width: 45%;
+  height: 100%;
+}
 
 #vector_normalize {
   border: 1px solid black;
@@ -12,4 +15,18 @@
   margin-left: 10px;
   margin-right: 20px;
   margin-bottom: 10px;
+  float: right;
+  width: 45%;
+  height: 100%;
 }
+
+/*.vector {
+  border: 1px solid black;
+  width: 45%;
+  height: 45%;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+
+}*/

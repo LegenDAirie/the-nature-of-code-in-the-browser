@@ -3,9 +3,9 @@
 var WIDTH = window.innerWidth;
 var HEIGHT = window.innerHeight;
 
-var iframeWindow = document.getElementById("vector_subtraction");
-iframeWindow.setAttribute('height', HEIGHT);
-iframeWindow.setAttribute('width', WIDTH);
+// var iframeWindow = document.getElementById("vector");
+// iframeWindow.setAttribute('height', HEIGHT);
+// iframeWindow.setAttribute('width', WIDTH);
 
 // var context = canvas.getContext('2d');
 // context.fillStyle = "white";

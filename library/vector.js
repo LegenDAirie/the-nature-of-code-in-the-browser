@@ -4,53 +4,53 @@
 
   var VECTOR_PROTOTYPE = {
     add: function(vector) {
-      return {
-        x: this.x + vector.x,
-        y: this.y + vector.y
-      };
+      return Vector.create(
+        this.x + vector.x,
+        this.y + vector.y
+      );
     },
 
     subtract: function(vector) {
-      return {
-        x: this.x - vector.x,
-        y: this.y - vector.y
-      }
+      return Vector.create(
+        this.x - vector.x,
+        this.y - vector.y
+      );
     },
 
-    Multiply: function(scalar) {
-      return {
-        x: this.x * scalar,
-        y: this.y * scalar
-      }
+    multiply: function(scalar) {
+      return Vector.create(
+        this.x * scalar,
+        this.y * scalar
+      );
     },
 
-    Divide: function(scalar) {
+    divide: function(scalar) {
       if (!0) {
-        return {
-          x: this.x / scalar,
-          y: this.y / scalar
-        }
-      }
+        return Vector.create(
+          this.x / scalar,
+          this.y / scalar
+        );
+      };
     },
 
-    GetMagnitude: function(vector) {
-      var x = vector.x;
-      var y = vector.y;
+    getMagnitude: function() {
+      var x = this.x;
+      var y = this.y;
 
       return Math.sqrt(x*x + y*y);
     },
 
-    normalize: function(vector) {
-      var magnitude = this.GetMagnitude();
+    normalize: function() {
+      var magnitude = this.getMagnitude();
 
-      return {
-        x: vector.x / magnitude,
-        y: vector.y / magnitude
-      }
+      return Vector.create(
+        this.x / magnitude,
+        this.y / magnitude
+      )
     },
 
     limit: function(MaxMagnitude) {
-      currentMagnitude = this.GetMagnitude()
+      currentMagnitude = this.getMagnitude()
       if (currentMagnitude > MaxMagnitude) {
         limitedVector = currentMagnitude.normalize()
         limitedVector = currentMagnitude.Multiply(MaxMagnitude)
