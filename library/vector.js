@@ -46,16 +46,18 @@
       return Vector.create(
         this.x / magnitude,
         this.y / magnitude
-      )
+      );
     },
 
     limit: function(MaxMagnitude) {
-      currentMagnitude = this.getMagnitude()
+      var currentMagnitude = this.getMagnitude()
       if (currentMagnitude > MaxMagnitude) {
-        limitedVector = currentMagnitude.normalize()
-        limitedVector = currentMagnitude.Multiply(MaxMagnitude)
+        var limitedVector = this.normalize()
+        limitedVector = limitedVector.multiply(MaxMagnitude)
         return limitedVector
-      }
+      } else {
+        return this;
+      };
     },
   }
 

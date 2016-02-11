@@ -1,3 +1,7 @@
+body {
+  background-color: #ffd7c7;
+}
+
 #vector_subtraction {
   border: 1px solid black;
   margin-top: 20px;
@@ -20,13 +24,24 @@
   height: 100%;
 }
 
-/*.vector {
+#acceleration {
   border: 1px solid black;
-  width: 45%;
-  height: 45%;
   margin-top: 20px;
   margin-left: 20px;
-  margin-right: 20px;
-  margin-bottom: 20px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  float: left;
+  width: 45%;
+  height: 100%;
+}
 
-}*/
+#mouse_orbit {
+  border: 1px solid black;
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-right: 20px;
+  margin-bottom: 10px;
+  float: right;
+  width: 45%;
+  height: 100%;
+}

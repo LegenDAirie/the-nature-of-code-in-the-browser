@@ -3,10 +3,10 @@
 // ;(function () {
 
   /* PRETTY MUCH A METATABLE FROM LUA */
-  var VECTOR_NORMALIZE_PROTOTYPE = {
+  var MOUSE_ORBIT_EXAMPLE_PROTOTYPE = {
     start: function () {
       var self = this;
-      var animate = false
+      var animate = false;
 
       window.requestAnimFrame = (function(){
         return  window.requestAnimationFrame       ||
@@ -43,18 +43,11 @@
       var self = this;
 
       context.clearRect(0, 0, canvas.width, canvas.height);
+      this.balls.forEach(function (ball) {
+        ball.move(self.gravitationalAccelerationForLocation.bind(self));
+        ball.draw();
+      })
 
-      var mouse = self.mouseVector()
-      var center = Vector.create(WIDTH / 2, HEIGHT / 2)
-      var normalizedVector = mouse.subtract(center)
-      normalizedVector = normalizedVector.normalize()
-      normalizedVector = normalizedVector.multiply(50)
-
-      // var newVector = mouse.sub
-
-      context.translate(WIDTH / 2, HEIGHT /2)
-      shapeMaker.drawLine(0, 0, normalizedVector.x, normalizedVector.y, this.black)
-      context.translate(-WIDTH / 2, -HEIGHT /2)
     },
 
     updateMouseLocation: function(event) {
@@ -63,6 +56,32 @@
         y: event.y
       };
     },
+
+    gravitationalAccelerationForLocation: function (location) {
+      if (!this.mouseLocation) { return {x: 0, y: 0} }
+
+      var dx = this.mouseLocation.x - location.x;
+      var dy = this.mouseLocation.y - location.y;
+      var distance = Math.sqrt(dx * dx + dy * dy);
+
+      var direction = {
+        x: dx / distance,
+        y: dy / distance
+      };
+
+      var magnitude;
+      if (distance > 10) {
+        magnitude = 0.1;
+      } else {
+        magnitude = 0;
+      }
+
+      return {
+        x: magnitude * direction.x,
+        y: magnitude * direction.y
+      };
+    },
+
 
     mouseVector: function () {
       if (!this.mouseLocation) { return Vector.create(0, 0) }
@@ -79,12 +98,17 @@
     }
   }
 
-  /* vector_subtraction_example CLASS" */
-  var Vector_normalize_example = {
+  /* acceleration_example CLASS" */
+  var MouseOrbitExample = {
     create: function () {
-      var Vector_normalize_example = Object.create(VECTOR_NORMALIZE_PROTOTYPE);
+      var mouseOrbitExample = Object.create(MOUSE_ORBIT_EXAMPLE_PROTOTYPE);
 
-      return Vector_normalize_example;
+      mouseOrbitExample.balls = []
+      for (var i = 0; i < 5; i ++) {
+        mouseOrbitExample.balls[i] = Ball.createRandom()
+      }
+
+      return mouseOrbitExample;
     }
   }
 

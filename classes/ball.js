@@ -4,7 +4,7 @@
 
   var MAX_SPEED = 4; // pixels per frame
   var MAX_INITIAL_SPEED = 2; // pixels per frame
-  var MAX_RADIUS = 50;
+  var MAX_RADIUS = 20;
 
   var BALL_PROTOTYPE = {
     /* write any methods that you want all instances to have here */
@@ -15,7 +15,7 @@
       this.velocity.x += acceleration.x;
       this.velocity.y += acceleration.y;
 
-      this.limitSpeed();
+      this.velocity = this.velocity.limit(MAX_SPEED)
 
       this.location.x += this.velocity.x;
       this.location.y += this.velocity.y;
@@ -72,8 +72,8 @@
       var b = Math.floor(Math.random() * 255);
       ball.color = 'rgba(' + r + ', ' + g + ', ' + b + ', 0.2)';
 
-      ball.location = location;
-      ball.velocity = velocity;
+      ball.location = Vector.create(location.x, location.y);
+      ball.velocity = Vector.create(velocity.x, velocity.y);
       ball.acceleration = {x: 0, y: 0}
       ball.radius = radius || 20;
 

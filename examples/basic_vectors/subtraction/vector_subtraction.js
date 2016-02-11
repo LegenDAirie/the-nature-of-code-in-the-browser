@@ -5,9 +5,38 @@
   /* PRETTY MUCH A METATABLE FROM LUA */
   var VECTOR_SUBTRACTION_EXAMPLE_PROTOTYPE = {
     start: function () {
-      setInterval(this.tick.bind(this), 1000/60);
+      var self = this;
+      var animate = false
+
+      window.requestAnimFrame = (function(){
+        return  window.requestAnimationFrame       ||
+                window.webkitRequestAnimationFrame ||
+                window.mozRequestAnimationFrame    ||
+                function( callback ){
+                  window.setTimeout(callback, 1000 / 60);
+                };
+      })();
+
+      // animation loop
+      function animloop(){
+        if (animate)
+        requestAnimFrame(animloop);
+        self.tick()
+      };
+
       canvas.addEventListener("mousemove", this.updateMouseLocation.bind(this));
       window.addEventListener("resize", this.handleWindowResize)
+
+      // starts the animation when the mouse enters the window
+      canvas.addEventListener('mouseover', function(event){
+        animate = true;
+        animloop();
+      });
+
+      // stops the animation when the mouse leaves the window
+      canvas.addEventListener("mouseout",function(event){
+        animate = false;
+      });
     },
 
     tick: function () {
@@ -20,7 +49,7 @@
       var subtractedVector = mouse.subtract(center)
 
       context.translate(WIDTH / 2, HEIGHT /2)
-      shapeMaker.drawLine(0, 0, subtractedVector.x, subtractedVector.y, this.black, context)
+      shapeMaker.drawLine(0, 0, subtractedVector.x, subtractedVector.y, this.black)
       context.translate(-WIDTH / 2, -HEIGHT /2)
     },
 

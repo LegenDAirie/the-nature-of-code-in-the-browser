@@ -3,10 +3,10 @@
 // ;(function () {
 
   /* PRETTY MUCH A METATABLE FROM LUA */
-  var VECTOR_NORMALIZE_PROTOTYPE = {
+  var ACCELERATION_PROTOTYPE = {
     start: function () {
       var self = this;
-      var animate = false
+      var animate = false;
 
       window.requestAnimFrame = (function(){
         return  window.requestAnimationFrame       ||
@@ -24,7 +24,7 @@
         self.tick()
       };
 
-      canvas.addEventListener("mousemove", this.updateMouseLocation.bind(this));
+      // canvas.addEventListener("mousemove", this.updateMouseLocation.bind(this));
       window.addEventListener("resize", this.handleWindowResize)
 
       // starts the animation when the mouse enters the window
@@ -42,26 +42,17 @@
     tick: function () {
       var self = this;
 
+      this.ball.move(self.addGravity)
+      this.ball.wrap()
       context.clearRect(0, 0, canvas.width, canvas.height);
-
-      var mouse = self.mouseVector()
-      var center = Vector.create(WIDTH / 2, HEIGHT / 2)
-      var normalizedVector = mouse.subtract(center)
-      normalizedVector = normalizedVector.normalize()
-      normalizedVector = normalizedVector.multiply(50)
-
-      // var newVector = mouse.sub
-
-      context.translate(WIDTH / 2, HEIGHT /2)
-      shapeMaker.drawLine(0, 0, normalizedVector.x, normalizedVector.y, this.black)
-      context.translate(-WIDTH / 2, -HEIGHT /2)
+      this.ball.draw()
     },
 
-    updateMouseLocation: function(event) {
-      this.mouseLocation = {
-        x: event.x,
-        y: event.y
-      };
+    addGravity: function(event) {
+      return {
+        x: 0,
+        y: 0.01
+      }
     },
 
     mouseVector: function () {
@@ -79,12 +70,14 @@
     }
   }
 
-  /* vector_subtraction_example CLASS" */
-  var Vector_normalize_example = {
+  /* acceleration_example CLASS" */
+  var Acceleration_example = {
     create: function () {
-      var Vector_normalize_example = Object.create(VECTOR_NORMALIZE_PROTOTYPE);
+      var acceleration_example = Object.create(ACCELERATION_PROTOTYPE);
 
-      return Vector_normalize_example;
+      acceleration_example.ball = Ball.createRandom()
+
+      return acceleration_example;
     }
   }
 
