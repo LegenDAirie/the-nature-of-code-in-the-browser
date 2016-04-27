@@ -22,7 +22,7 @@
 	},
 
   update: function() {
-     console.log("update")
+    //  console.log("update")
     this.move();
     this.draw();
   },

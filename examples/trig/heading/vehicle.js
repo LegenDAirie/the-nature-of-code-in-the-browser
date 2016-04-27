@@ -8,7 +8,7 @@
 
   var VEHICLE_PROTOTYPE = {
     move: function(cursor){
-    console.log('cursor', cursor.location);
+    // console.log('cursor', cursor.location);
       this.acceleration = this.calculateAcceleration(cursor)
 
       this.velocity.x += this.acceleration.x
@@ -22,7 +22,7 @@
       GLB.context.clearRect(0,0, GLB.canvas.width, GLB.canvas.height)
       GLB.context.fillStyle = 'rgba(255, 0,0, 0.1)';
 
-      console.log('locaiton', this.location);
+      // console.log('locaiton', this.location);
       GLB.context.fillRect(this.location.x, this.location.y, 20, 20);
       GLB.context.stroke();
     },
