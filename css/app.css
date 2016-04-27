@@ -1,5 +1,5 @@
 body {
-  background-color: #ffd7c7;
+  background-color: white;
 }
 
 #vector_subtraction {
@@ -42,6 +42,17 @@ body {
   margin-right: 20px;
   margin-bottom: 10px;
   float: right;
+  width: 45%;
+  height: 100%;
+}
+
+#star_field {
+  border: 1px solid black;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  float: left;
   width: 45%;
   height: 100%;
 }

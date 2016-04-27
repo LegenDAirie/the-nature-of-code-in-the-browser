@@ -19,8 +19,9 @@
 
       // animation loop
       function animloop(){
-        if (animate)
-        requestAnimFrame(animloop);
+        if (animate) {
+          requestAnimFrame(animloop);
+        }
         self.tick()
       };
 
