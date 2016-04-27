@@ -11,10 +11,6 @@
 		this.animate();
 	},
 
-  draw: function() {
-
-  },
-
 	animate: function() {
 		var self = this;
 		// console.log('animate');
@@ -26,17 +22,34 @@
 	},
 
   update: function() {
-    // console.log("update")
+     console.log("update")
+    this.move();
+    this.draw();
+  },
 
+  move: function() {
+    var self = this
+    _.each(this.vehicles, function(value){value.move(self.cursor)})
+  },
+
+  draw: function() {
+    _.each(this.vehicles, function(value){value.draw()})
   }
-
  };
 
  GLB.Game = {
 	create: function(){
 		var game = Object.create(GAME_PROTOTYPE);
     game.cursor = GLB.Cursor.create()
-    
+    game.vehicles = []
+
+    var vehicleMax = 10;
+
+    for ( var i = 1; i < vehicleMax; i++ ) {
+      var vehicle = GLB.Vehicle.create()
+      game.vehicles.push(vehicle);
+    }
+
 		return game;
 	}
  };
