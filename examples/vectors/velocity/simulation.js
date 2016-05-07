@@ -13,6 +13,7 @@
         self.animate = true;
         self.animateLoop();
       });
+
       GLB.canvas.addEventListener('mouseout', function(){
         self.animate = false;
       });
@@ -23,19 +24,21 @@
       if (this.animate){
         window.requestAnimationFrame(this.animateLoop.bind(this));
         this.update();
+        this.draw();
       }
     },
 
     update: function(){
+      this.ball.update();
     },
 
     draw: function(){
-
+      this.ball.draw();
     },
 
     resizeCanvas: function(){
-      GLB.canvas.setAttribute('width', window.innerWidth)
-      GLB.canvas.setAttribute('height', window.innerHeight)
+      GLB.canvas.setAttribute('width', window.innerWidth);
+      GLB.canvas.setAttribute('height', window.innerHeight);
     }
 
   }
@@ -43,7 +46,7 @@
   GLB.Simulation = {
     create: function(){
       var simulation = Object.create(SIMULATION_PROTOTYPE);
-
+      simulation.ball = GLB.Ball.create();
       return simulation;
     }
   }
