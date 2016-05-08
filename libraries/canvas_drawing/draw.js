@@ -5,8 +5,10 @@
 
   GLB.Draw = {
     circle: function(x, y, radius, color){
+
       var context = GLB.context
       context.beginPath();
+      context.fillStyle = color;
       context.arc(
         x,
         y,

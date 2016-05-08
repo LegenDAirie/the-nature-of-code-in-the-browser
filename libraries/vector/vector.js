@@ -5,9 +5,7 @@
 
   var VECTOR_PROTOTYPE = {
     add: function(v){
-      if (v instanceof GLB.Vector){
-        return GLB.Vector.create(this.x + v.x, this.y + v.y)
-      }
+      return GLB.Vector.create(this.x + v.x, this.y + v.y);
     }
   }
 

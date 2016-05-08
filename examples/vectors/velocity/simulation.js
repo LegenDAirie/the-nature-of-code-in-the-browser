@@ -23,6 +23,7 @@
     animateLoop: function(){
       if (this.animate){
         window.requestAnimationFrame(this.animateLoop.bind(this));
+
         this.update();
         this.draw();
       }
@@ -33,6 +34,9 @@
     },
 
     draw: function(){
+      var canvas = GLB.canvas;
+
+      GLB.context.clearRect(0, 0, canvas.width, canvas.height);
       this.ball.draw();
     },
 
@@ -45,8 +49,10 @@
 
   GLB.Simulation = {
     create: function(){
+
       var simulation = Object.create(SIMULATION_PROTOTYPE);
-      simulation.ball = GLB.Ball.create();
+      simulation.ball = GLB.Ball.create(100, 100, 20);
+
       return simulation;
     }
   }
