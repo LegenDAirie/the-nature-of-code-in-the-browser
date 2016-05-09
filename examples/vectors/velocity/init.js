@@ -9,22 +9,7 @@
 
   GLB.context = GLB.canvas.getContext('2d');
 
-  var simulation = GLB.Simulation.create({
-    init: function (simulation) {
-      simulation.ball = GLB.Ball.create({
-        x: 100,
-        y: 100,
-        radius: 20
-      });
-    },
+  var simulation = GLB.Simulation.create(GLB.simulationLogic);
 
-    update: function () {
-      this.ball.update();
-    },
-
-    draw: function () {
-      this.ball.draw();
-    }
-  });
   simulation.start();
 })();
