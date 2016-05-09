@@ -5,7 +5,6 @@
 
   var BALL_PROTOTYPE = {
     update: function(){
-
       this.velocity = this.velocity.add(this.acceleration);
       this.location = this.location.add(this.velocity);
     },
@@ -17,7 +16,7 @@
   }
 
   GLB.Ball = {
-    create: function(x, y, radius){
+    create: function({x, y, radius}){
       var ball = Object.create(BALL_PROTOTYPE);
 
       ball.location = GLB.Vector.create(x, y);

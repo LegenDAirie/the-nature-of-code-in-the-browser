@@ -30,14 +30,14 @@
     },
 
     update: function(){
-      this.ball.update();
+      this.props.update.call(this);
     },
 
     draw: function(){
       var canvas = GLB.canvas;
 
       GLB.context.clearRect(0, 0, canvas.width, canvas.height);
-      this.ball.draw();
+      this.props.draw.call(this);
     },
 
     resizeCanvas: function(){
@@ -48,10 +48,17 @@
   }
 
   GLB.Simulation = {
-    create: function(){
+    create: function({draw, init, update}){
 
       var simulation = Object.create(SIMULATION_PROTOTYPE);
-      simulation.ball = GLB.Ball.create(100, 100, 20);
+
+      simulation.props        = {}
+      simulation.props.draw   = draw
+      simulation.props.update = update
+
+      if (init) {
+        init(simulation)
+      }
 
       return simulation;
     }
