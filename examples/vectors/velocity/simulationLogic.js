@@ -12,6 +12,7 @@
   GLB.simulationLogic = {
     update: function () {
       ball.update();
+      GLB.Screen_edges.wrap_around_screen(ball)
     },
 
     draw: function () {

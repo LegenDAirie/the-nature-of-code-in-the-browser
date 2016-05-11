@@ -23,6 +23,7 @@
       ball.velocity = GLB.Vector.create(1, 1);
       ball.acceleration = GLB.Vector.create();
       ball.radius = radius || 20;
+      
       var r = Math.floor(Math.random() * 255);
       var g = Math.floor(Math.random() * 255);
       var b = Math.floor(Math.random() * 255);
