@@ -43,19 +43,19 @@
     var reflective_edges = function(object) {
 
       if (tooFarRight(object)) {
-
+        object.velocity.x = -object.velocity.x
       }
 
       if (tooFarLeft(object)) {
-
+        object.velocity.x = -object.velocity.x
       }
 
       if (tooFarDown(object)) {
-
+        object.velocity.y = -object.velocity.y
       }
 
       if (tooFarUp(object)) {
-        
+        object.velocity.y = -object.velocity.y
       }
     }
 

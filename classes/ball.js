@@ -20,7 +20,7 @@
       var ball = Object.create(BALL_PROTOTYPE);
 
       ball.location = GLB.Vector.create(x, y);
-      ball.velocity = GLB.Vector.create(10, 1);
+      ball.velocity = GLB.Vector.create(10, 10);
       ball.acceleration = GLB.Vector.create();
       ball.radius = radius || 20;
 
