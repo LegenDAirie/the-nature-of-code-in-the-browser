@@ -27,7 +27,7 @@
       var r = Math.floor(Math.random() * 255);
       var g = Math.floor(Math.random() * 255);
       var b = Math.floor(Math.random() * 255);
-      var a = 0.8;
+      var a = 0.2;
       ball.color = "rgba(" + r + ", " + g + ", " + b + ", " + a + ")";
 
       return ball;

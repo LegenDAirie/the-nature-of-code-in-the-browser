@@ -5,6 +5,7 @@
 
   GLB.Draw = {
     circle: function(x, y, radius, color){
+      console.log(color);
 
       var context = GLB.context
       context.beginPath();
@@ -14,9 +15,11 @@
         y,
         radius,
         0,
-        Math.PI * 2
+        Math.PI * 2,
+        false
       );
       context.stroke();
+      context.fill();
     }
   }
 })();
