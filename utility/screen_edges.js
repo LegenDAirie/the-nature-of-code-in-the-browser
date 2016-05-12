@@ -6,7 +6,7 @@
   var Screen_edges = function() {
 
     var tooFarRight = function(object) {
-      return object.location.x > object.radius + window.innerWidth
+      return object.location.x > object.radius + GLB.canvas.width
     }
 
     var tooFarLeft = function(object) {
@@ -14,7 +14,7 @@
     }
 
     var tooFarDown = function(object) {
-      return object.location.y > object.radius + window.innerHeight
+      return object.location.y > object.radius + GLB.canvas.height
     }
 
     var tooFarUp = function(object) {
@@ -25,26 +25,45 @@
 
       if (tooFarRight(object)) {
         object.location.x = -object.radius
-      } else if (tooFarLeft(object)) {
-        object.location.x = object.radius + window.innerWidth
+      }
+
+      if (tooFarLeft(object)) {
+        object.location.x = object.radius + GLB.canvas.width
       }
 
       if (tooFarDown(object)) {
         object.location.y = -object.radius
-      } else if (tooFarUp(object)) {
-        object.location.y = object.radius + window.innerHeight
+      }
+
+      if (tooFarUp(object)) {
+        object.location.y = object.radius + GLB.canvas.height
       }
     }
 
     var reflective_edges = function(object) {
 
+      if (tooFarRight(object)) {
+
+      }
+
+      if (tooFarLeft(object)) {
+
+      }
+
+      if (tooFarDown(object)) {
+
+      }
+
+      if (tooFarUp(object)) {
+        
+      }
     }
 
     return {
       wrap_around_screen: wrap_around_screen,
       reflective_edges: reflective_edges
     }
-    
+
   }
 
   GLB.Screen_edges = Screen_edges();
