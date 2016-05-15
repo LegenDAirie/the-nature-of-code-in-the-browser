@@ -3,35 +3,32 @@
 (function(){
   var GLB = window.GLB = window.GLB || {};
 
-  var COLOR = 'rgba(0, 0, 0, 0.1)';
+  var COLOR = 'rgba(0, 0, 0, .1)';
+  var SCALE = 0.5;
 
   var drawFractal = function(x, y, radius, angle = 0, recursiveLayer = 0) {
     GLB.Draw.circle(x, y, radius, COLOR);
     if (radius > 2 && recursiveLayer < 4) {
-      var timeThing = Math.sin(performance.now() / 1000) / 4 + 0.25
+      var timeThing = Math.sin(performance.now() / 1000) / 4 + 0.25 // between 0 and 0.5
 
-      var x1 = x + radius * Math.cos(angle + Math.PI * 1 / 2)
-      var y1 = y + radius * Math.sin(angle + Math.PI * 1 / 2)
+      var currentBranchCount = 6 * timeThing + 1; // between 1 and 5
 
-      var x2 = x + radius * Math.cos(angle + Math.PI * 2 / 2)
-      var y2 = y + radius * Math.sin(angle + Math.PI * 2 / 2)
-
-      var x3 = x + radius * Math.cos(angle + Math.PI * 3 / 2)
-      var y3 = y + radius * Math.sin(angle + Math.PI * 3 / 2)
-
-      var x4 = x + radius * Math.cos(angle + Math.PI * 4 / 2)
-      var y4 = y + radius * Math.sin(angle + Math.PI * 4 / 2)
-
-      var scale = 0.5;
       var offsetAngle = Math.PI * timeThing;
+      var newX = x + radius * Math.cos(angle);
+      var newY = y + radius * Math.sin(angle);
+      drawFractal(newX, newY, radius * SCALE, offsetAngle + angle, recursiveLayer + 1)
 
-      drawFractal(x1, y1, radius * scale, offsetAngle + angle, recursiveLayer + 1)
-      drawFractal(x2, y2, radius * scale, offsetAngle + angle, recursiveLayer + 1)
-      drawFractal(x3, y3, radius * scale, offsetAngle + angle, recursiveLayer + 1)
-      drawFractal(x4, y4, radius * scale, offsetAngle + angle, recursiveLayer + 1)
+      _.times(Math.floor(currentBranchCount), function (number) {
+        var rotation = Math.PI * 2 * (number + 1) / currentBranchCount;
+        var offsetAngle = Math.PI * timeThing;
+
+        var newX = x + radius * Math.cos(angle + rotation);
+        var newY = y + radius * Math.sin(angle + rotation);
+
+        drawFractal(newX, newY, radius * SCALE, offsetAngle + angle, recursiveLayer + 1)
+      })
     }
   }
-
 
   GLB.simulationLogic = {
     update: function () {
