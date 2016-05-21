@@ -9,14 +9,17 @@
     radius: 20
   });
 
+  var ball2 = GLB.Ball.createRandom();
+
   GLB.simulationLogic = {
     update: function () {
-      ball.update();
+      ball2.update();
+      console.log(ball2.location.x);
       GLB.Screen_edges.reflective_edges(ball)
     },
 
     draw: function () {
-      ball.draw();
+      ball2.draw();
     }
   }
 })();

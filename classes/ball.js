@@ -20,9 +20,29 @@
       var ball = Object.create(BALL_PROTOTYPE);
 
       ball.location = GLB.Vector.create({x: x, y: y});
-      ball.velocity = GLB.Vector.create({x: 1, y: 1});
+      ball.velocity = GLB.Vector.create({x: 0, y: 0});
       ball.acceleration = GLB.Vector.create({x: 0, y: 0});
       ball.radius = radius || 20;
+
+      var r = Math.floor(Math.random() * 255);
+      var g = Math.floor(Math.random() * 255);
+      var b = Math.floor(Math.random() * 255);
+      var a = 0.2;
+      ball.color = "rgba(" + r + ", " + g + ", " + b + ", " + a + ")";
+
+      return ball;
+    },
+
+    createRandom: function() {
+      var ball = Object.create(BALL_PROTOTYPE);
+
+      ball.location = GLB.Vector.create({
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight
+      });
+      ball.velocity = GLB.Vector.createRandom();
+      ball.acceleration = GLB.Vector.create({x: 0, y: 0});
+      ball.radius = Math.random() * 50;
 
       var r = Math.floor(Math.random() * 255);
       var g = Math.floor(Math.random() * 255);
