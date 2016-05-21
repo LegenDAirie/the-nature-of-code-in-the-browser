@@ -3,23 +3,31 @@
 (function(){
   var GLB = window.GLB = window.GLB || {};
 
-  var ball = GLB.Ball.create({
-    x: 100,
-    y: 100,
-    radius: 20,
-    color: {r: 50, g: 50, b: 50, a: .2}
-  });
+  // var ball = GLB.Ball.create({
+  //   x: 100,
+  //   y: 100,
+  //   radius: 20,
+  //   color: {r: 50, g: 50, b: 50, a: .2}
+  // });
 
-  var ball2 = GLB.Ball.createRandom();
+  var balls = [];
+  _.times(50, function() {
+    var ball = GLB.Ball.createRandom();
+    balls.push(ball);
+  })
 
   GLB.simulationLogic = {
     update: function () {
-      ball2.update();
-      GLB.Screen_edges.reflective_edges(ball2)
+      _.forEach(balls, function(ball) {
+        ball.update();
+        GLB.Screen_edges.reflective_edges(ball);
+      })
     },
 
     draw: function () {
-      ball2.draw();
+      _.forEach(balls, function(ball) {
+        ball.draw();
+      })
     }
   }
 })();

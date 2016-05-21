@@ -38,7 +38,7 @@
       });
       ball.velocity = GLB.Vector.createRandom();
       ball.acceleration = GLB.Vector.create({x: 0, y: 0});
-      ball.radius = Math.random() * 50;
+      ball.radius = _.random(10, 40);
 
       var r = Math.floor(Math.random() * 255);
       var g = Math.floor(Math.random() * 255);
