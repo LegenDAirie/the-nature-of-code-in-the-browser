@@ -16,12 +16,12 @@
   }
 
   GLB.Ball = {
-    create: function({x, y, radius}){
+    create: function({ x, y, radius }){
       var ball = Object.create(BALL_PROTOTYPE);
 
-      ball.location = GLB.Vector.create(x, y);
-      ball.velocity = GLB.Vector.create();
-      ball.acceleration = GLB.Vector.create();
+      ball.location = GLB.Vector.create({x: x, y: y});
+      ball.velocity = GLB.Vector.create({x: 1, y: 1});
+      ball.acceleration = GLB.Vector.create({x: 0, y: 0});
       ball.radius = radius || 20;
 
       var r = Math.floor(Math.random() * 255);

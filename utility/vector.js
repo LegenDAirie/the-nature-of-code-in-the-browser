@@ -5,16 +5,30 @@
 
   var VECTOR_PROTOTYPE = {
     add: function(v){
-      return GLB.Vector.create(this.x + v.x, this.y + v.y);
+      return GLB.Vector.create({
+        x: this.x + v.x,
+        y: this.y + v.y
+      });
     }
-  }
+  };
 
   GLB.Vector = {
-    create: function(x, y){
+    create: function({ x, y }) {
       var vector = Object.create(VECTOR_PROTOTYPE);
 
         vector.x = x || 0;
         vector.y = y || 0;
+
+      return vector;
+    },
+
+    createRandom: function() {
+      var vector = Object.create(VECTOR_PROTOTYPE);
+      var angle1 = 2 * Math.PI;
+      var angle2 = 2 * Math.PI;
+
+      vector.x = Math.cos(angle1);
+      vector.y = Math.sin(angle2);
 
       return vector;
     }
