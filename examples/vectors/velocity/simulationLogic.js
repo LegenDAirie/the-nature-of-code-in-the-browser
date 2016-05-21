@@ -11,7 +11,7 @@
   // });
 
   var balls = [];
-  _.times(50, function() {
+  _.times(500, function() {
     var ball = GLB.Ball.createRandom();
     balls.push(ball);
   })

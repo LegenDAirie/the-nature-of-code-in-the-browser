@@ -32,13 +32,15 @@
     createRandom: function() {
       var ball = Object.create(BALL_PROTOTYPE);
 
+      ball.radius = _.random(10, 40);
+
       ball.location = GLB.Vector.create({
-        x: Math.random() * window.innerWidth,
-        y: Math.random() * window.innerHeight
+        x: _.random(ball.radius + 1, window.innerWidth - ball.radius - 1),
+        y: _.random(ball.radius + 1, window.innerHeight - ball.radius - 1)
       });
+
       ball.velocity = GLB.Vector.createRandom();
       ball.acceleration = GLB.Vector.create({x: 0, y: 0});
-      ball.radius = _.random(10, 40);
 
       var r = Math.floor(Math.random() * 255);
       var g = Math.floor(Math.random() * 255);
