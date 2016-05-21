@@ -24,7 +24,7 @@
       ball.acceleration = GLB.Vector.create({x: 0, y: 0});
       ball.radius = radius || 20;
 
-      ball.color = "rgba(" + r + ", " + g + ", " + b + ", " + a + ")";
+      ball.color = `rgba(${r}, ${g}, ${b}, ${a})`
 
       return ball;
     },
@@ -44,7 +44,7 @@
       var g = Math.floor(Math.random() * 255);
       var b = Math.floor(Math.random() * 255);
       var a = 0.2;
-      ball.color = "rgba(" + r + ", " + g + ", " + b + ", " + a + ")";
+      ball.color = `rgba(${r}, ${g}, ${b}, ${a})`
 
       return ball;
     }

@@ -10,16 +10,16 @@
     color: {r: 50, g: 50, b: 50, a: .2}
   });
 
-  // var ball2 = GLB.Ball.createRandom();
+  var ball2 = GLB.Ball.createRandom();
 
   GLB.simulationLogic = {
     update: function () {
-      ball.update();
-      GLB.Screen_edges.reflective_edges(ball)
+      ball2.update();
+      GLB.Screen_edges.reflective_edges(ball2)
     },
 
     draw: function () {
-      ball.draw();
+      ball2.draw();
     }
   }
 })();
