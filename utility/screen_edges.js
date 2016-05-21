@@ -5,57 +5,42 @@
 
   var Screen_edges = function() {
 
-    var tooFarRight = function(object) {
-      return object.location.x > object.radius + GLB.canvas.width
-    }
-
-    var tooFarLeft = function(object) {
-      return object.location.x < -object.radius
-    }
-
-    var tooFarDown = function(object) {
-      return object.location.y > object.radius + GLB.canvas.height
-    }
-
-    var tooFarUp = function(object) {
-      return object.location.y < -object.radius
-    }
-
     var wrap_around_screen = function(object) {
 
-      if (tooFarRight(object)) {
-        object.location.x = -object.radius
+      //right edge
+      if (object.location.x > GLB.canvas.width + object.radius) {
+        object.location.x = -object.radius;
       }
-
-      if (tooFarLeft(object)) {
-        object.location.x = object.radius + GLB.canvas.width
+      //left edge
+      if (object.location.x < -object.radius) {
+        object.location.x = GLB.canvas.width + object.radius;
       }
-
-      if (tooFarDown(object)) {
-        object.location.y = -object.radius
+      //bottom edge
+      if (object.location.y > GLB.canvas.height + object.radius) {
+        object.location.y = -object.radius;
       }
-
-      if (tooFarUp(object)) {
-        object.location.y = object.radius + GLB.canvas.height
+      //top edge
+      if (object.location.y < -object.radius) {
+        object.location.y = GLB.canvas.height + object.radius;
       }
     }
 
     var reflective_edges = function(object) {
-
-      if (tooFarRight(object)) {
-        object.velocity.x = -object.velocity.x
+      //right edge
+      if (object.location.x > GLB.canvas.width - object.radius) {
+        object.velocity.x = -object.velocity.x;
       }
-
-      if (tooFarLeft(object)) {
-        object.velocity.x = -object.velocity.x
+      //left edge
+      if (object.location.x < object.radius) {
+        object.velocity.x = -object.velocity.x;
       }
-
-      if (tooFarDown(object)) {
-        object.velocity.y = -object.velocity.y
+      //bottom edge
+      if (object.location.y > GLB.canvas.height - object.radius) {
+        object.velocity.y = -object.velocity.y;
       }
-
-      if (tooFarUp(object)) {
-        object.velocity.y = -object.velocity.y
+      //top edge
+      if (object.location.y < object.radius) {
+        object.velocity.y = -object.velocity.y;
       }
     }
 
