@@ -56,7 +56,7 @@
       simulation.props.draw   = draw
       simulation.props.update = update
 
-      if (init) {
+      if (init){
         init(simulation)
       }
 
