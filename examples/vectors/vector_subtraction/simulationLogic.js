@@ -4,15 +4,15 @@
   var GLB = window.GLB = window.GLB || {};
 
   var title = GLB.Title.create("Vector Subtraction");
-
   var mouse = GLB.Vector.create({x: 0, y: 0});
-
   var line = GLB.Line.create({
     startX: GLB.canvas.width / 2,
     startY: GLB.canvas.height / 2,
     endX:   300,
     endY:   300
   });
+
+
 
   GLB.simulationLogic = {
 
@@ -32,7 +32,7 @@
     },
 
     draw: function(){
-      line.draw()
+      line.draw();
     },
 
     displayTitle: function(){
