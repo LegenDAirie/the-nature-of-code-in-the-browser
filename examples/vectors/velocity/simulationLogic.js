@@ -3,6 +3,7 @@
 (function(){
   var GLB = window.GLB = window.GLB || {};
 
+  var title = GLB.Title.create("Vector Addition");
   var balls = [];
 
   _.times(5, function(){
@@ -26,16 +27,7 @@
     },
 
     displayTitle: function(){
-      GLB.Draw.title({
-        text:         "Vector Addition",
-        fontSize:     "72px",
-        fontFamily:   "Arial",
-        textAlign:    "center",
-        x:            GLB.canvas.width / 2,
-        y:            GLB.canvas.height / 2,
-        color:        "rgba(0, 0, 0, 0.6)",
-        textBaseline: "middle"
-      })
+      title.display();
     }
   }
 })();
