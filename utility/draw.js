@@ -50,7 +50,6 @@
     };
 
     var rectangle = function({ startX, startY, endX, endY, color }){
-      console.log(color);
       context.beginPath();
       context.fillStyle = color;
       context.fillRect(startX, startY, endX, endY);
