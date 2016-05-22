@@ -32,9 +32,18 @@
       context.fillText(text, x, y);
     }
 
+    var line = function({ endX, endY, width, startX, startY }){
+      console.log(endX, endY, width, startX, startY);
+      context.beginPath();
+      context.moveTo(startX, startY);
+      context.lineTo(endX, endY);
+      context.stroke();
+    };
+
     return {
       circle,
-      text
+      text,
+      line
     }
   }
 
