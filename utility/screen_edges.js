@@ -5,6 +5,13 @@
 
   var Screen_edges = function() {
 
+    var random_location_inside_screen = function(ball) {
+      return GLB.Vector.create({
+        x: _.random(ball.radius + 1, window.innerWidth - (ball.radius + 1)),
+        y: _.random(ball.radius + 1, window.innerHeight - (ball.radius + 1))
+      });
+    }
+
     var wrap_around_screen = function(object) {
 
       //right edge
@@ -46,7 +53,8 @@
 
     return {
       wrap_around_screen: wrap_around_screen,
-      reflective_edges: reflective_edges
+      reflective_edges: reflective_edges,
+      random_location_inside_screen: random_location_inside_screen
     }
 
   }
