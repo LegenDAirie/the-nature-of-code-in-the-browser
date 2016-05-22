@@ -13,7 +13,8 @@
         x:            GLB.canvas.width / 2,
         y:            GLB.canvas.height / 2,
         color:        "rgba(0, 0, 0, 0.6)",
-        textBaseline: "middle"
+        textBaseline: "middle",
+        greyOut:      true
       });
     }
   }

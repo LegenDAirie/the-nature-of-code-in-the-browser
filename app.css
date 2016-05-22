@@ -1,0 +1,7 @@
+iframe {
+  border: none;
+}
+
+.row iframe {
+  padding: 0;
+}
