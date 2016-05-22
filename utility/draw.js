@@ -3,10 +3,12 @@
 (function(){
   var GLB = window.GLB = window.GLB || {};
 
-  GLB.Draw = {
-    circle: function(x, y, radius, color){
+  var Draw = function(){
 
-      var context = GLB.context
+    var context = GLB.context;
+
+    var circle = function({ x, y, radius, color }){
+
       context.beginPath();
       context.fillStyle = color;
       context.arc(
@@ -20,5 +22,20 @@
       context.stroke();
       context.fill();
     }
+
+    var title = function({ text, fontSize, fontFamily, x, y, textAlign, color }){
+      context.font      = `${fontSize} ${fontFamily}`;
+      context.textAlign = textAlign;
+      context.fillStyle = color;
+
+      context.fillText(text, x, y);
+    }
+
+    return {
+      circle,
+      title
+    }
   }
+
+  GLB.Draw = Draw();
 })();

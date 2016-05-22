@@ -11,7 +11,12 @@
 
     draw: function(){
 
-      GLB.Draw.circle(this.location.x, this.location.y, this.radius, this.color);
+      GLB.Draw.circle({
+        x:      this.location.x,
+        y:      this.location.y,
+        radius: this.radius,
+        color:  this.color
+      });
     }
   }
 
