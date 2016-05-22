@@ -23,10 +23,11 @@
       context.fill();
     }
 
-    var title = function({ text, fontSize, fontFamily, x, y, textAlign, color }){
-      context.font      = `${fontSize} ${fontFamily}`;
-      context.textAlign = textAlign;
-      context.fillStyle = color;
+    var title = function({ text, fontSize, fontFamily, x, y, textAlign, color, textBaseline }){
+      context.font         = `${fontSize} ${fontFamily}`;
+      context.textAlign    = textAlign;
+      context.textBaseline = textBaseline;
+      context.fillStyle    = color;
 
       context.fillText(text, x, y);
     }

@@ -8,8 +8,8 @@
     start: function(){
       var self = this;
       this.props.displayTitle.call(this);
-      
-      window.addEventListener("resize", this.resizeCanvas);
+
+      window.addEventListener("resize", this.resizeCanvas.bind(this));
 
       GLB.canvas.addEventListener('mouseover', function(){
         self.animate = true;
@@ -46,6 +46,7 @@
     resizeCanvas: function(){
       GLB.canvas.setAttribute('width', window.innerWidth);
       GLB.canvas.setAttribute('height', window.innerHeight);
+      this.props.displayTitle.call(this);
     }
 
   }
