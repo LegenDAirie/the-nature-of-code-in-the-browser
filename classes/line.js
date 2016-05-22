@@ -12,11 +12,12 @@
         startY: this.start.y,
         width:  this.width
       });
-    },
-
-    update: function(){
-
     }
+
+    // update: function({ startX, startY, endX, endY }){
+    //   this.start = GLB.Vector.create({x: startX, y: endY});
+    //   this.end   = GLB.Vector.create({x: endX, y: endY});
+    // }
   }
 
   GLB.Line = {

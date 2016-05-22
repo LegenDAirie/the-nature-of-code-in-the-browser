@@ -33,7 +33,6 @@
     }
 
     var line = function({ endX, endY, width, startX, startY }){
-      console.log(endX, endY, width, startX, startY);
       context.beginPath();
       context.moveTo(startX, startY);
       context.lineTo(endX, endY);

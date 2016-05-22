@@ -9,7 +9,11 @@
       var self = this;
       this.props.displayTitle.call(this);
 
-      window.addEventListener("resize", this.resizeCanvas.bind(this));
+      window.addEventListener("resize", function(){
+        GLB.canvas.setAttribute('width', window.innerWidth);
+        GLB.canvas.setAttribute('height', window.innerHeight);
+        self.props.displayTitle.call(this);
+      });
 
       GLB.canvas.addEventListener('mouseover', function(){
         self.animate = true;
@@ -20,6 +24,10 @@
         self.animate = false;
         self.props.displayTitle.call(this);
       });
+
+      if (this.props.init){
+        this.props.init();
+      };
 
     },
 
@@ -41,29 +49,19 @@
 
       GLB.context.clearRect(0, 0, canvas.width, canvas.height);
       this.props.draw.call(this);
-    },
-
-    resizeCanvas: function(){
-      GLB.canvas.setAttribute('width', window.innerWidth);
-      GLB.canvas.setAttribute('height', window.innerHeight);
-      this.props.displayTitle.call(this);
     }
-
   }
 
   GLB.Simulation = {
-    create: function({ draw, init, update, displayTitle }){
+    create: function({ draw, init = null, update, displayTitle }){
 
       var simulation = Object.create(SIMULATION_PROTOTYPE);
 
-      simulation.props              = {}
-      simulation.props.draw         = draw
-      simulation.props.update       = update
-      simulation.props.displayTitle = displayTitle
-
-      if (init){
-        init(simulation)
-      }
+      simulation.props              = {};
+      simulation.props.draw         = draw;
+      simulation.props.update       = update;
+      simulation.props.init         = init;
+      simulation.props.displayTitle = displayTitle;
 
       return simulation;
     }
