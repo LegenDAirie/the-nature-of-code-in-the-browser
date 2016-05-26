@@ -3,7 +3,7 @@
 (function(){
   var GLB = window.GLB = window.GLB || {};
 
-  var title = GLB.Title.create("Vector Subtraction");
+  var title = GLB.Title.create("Vector Multiplication");
 
   var mouse = GLB.Vector.create({x: 0, y: 0});
   var center = GLB.Vector.create({
@@ -21,7 +21,8 @@
       GLB.canvas.addEventListener('mousemove', function(event){
         mouse = GLB.Vector.create({x: event.x, y: event.y});
 
-        var end = mouse.sub(center)
+        var end = mouse.sub(center);
+        end = end.multiply(0.5);
         line.update({start: center, end: end.add(center)})
       });
     },

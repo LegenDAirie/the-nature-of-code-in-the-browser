@@ -42,10 +42,10 @@
       context.fillText(text, x, y);
     };
 
-    var line = function({ endX, endY, width, startX, startY }){
+    var line = function({ start, end, width }){
       context.beginPath();
-      context.moveTo(startX, startY);
-      context.lineTo(endX, endY);
+      context.moveTo(start.x, start.y);
+      context.lineTo(end.x, end.y);
       context.stroke();
     };
 

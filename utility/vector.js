@@ -9,6 +9,20 @@
         x: this.x + v.x,
         y: this.y + v.y
       });
+    },
+
+    sub: function(v){
+      return GLB.Vector.create({
+        x: this.x - v.x,
+        y: this.y - v.y
+      });
+    },
+
+    multiply: function(number){
+      return GLB.Vector.create({
+        x: this.x * number,
+        y: this.y * number
+      });
     }
   };
 

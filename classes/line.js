@@ -6,29 +6,27 @@
   var LINE_PROTOTYPE = {
     draw: function(){
       GLB.Draw.line({
-        endX:   this.end.x,
-        endY:   this.end.y,
-        startX: this.start.x,
-        startY: this.start.y,
-        width:  this.width
+        start: this.start,
+        end:   this.end,
+        width: this.width
       });
-    }
+    },
 
-    // update: function({ startX, startY, endX, endY }){
-    //   this.start = GLB.Vector.create({x: startX, y: endY});
-    //   this.end   = GLB.Vector.create({x: endX, y: endY});
-    // }
-  }
+    update: function({ start, end }){
+      this.start = GLB.Vector.create({x: start.x, y: start.y});
+      this.end   = GLB.Vector.create({x: end.x, y: end.y});
+    }
+  };
 
   GLB.Line = {
-    create: function({ startX, startY, endX, endY, width }){
+    create: function({ start, end, width = "1px" }){
       var line = Object.create(LINE_PROTOTYPE);
 
-      line.end   = GLB.Vector.create({x: endX, y: endY});
-      line.start = GLB.Vector.create({x: startX, y: startY});
+      line.start = GLB.Vector.create({x: start.x, y: start.y});
+      line.end   = GLB.Vector.create({x: end.x, y: end.y});
       line.width = width;
 
       return line;
     }
-  }
+  };
 })();
