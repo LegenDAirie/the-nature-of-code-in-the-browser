@@ -7,7 +7,7 @@
     display: function() {
       GLB.Draw.text({
         text:         this.text,
-        fontSize:     "72px",
+        fontSize:     "60px",
         fontFamily:   "Arial",
         textAlign:    "center",
         x:            GLB.canvas.width / 2,
