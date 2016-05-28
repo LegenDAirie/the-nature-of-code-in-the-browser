@@ -34,7 +34,7 @@
         startY: 0,
         endX:   mouse.magnitude(),
         endY:   10,
-        color:  "rgba(0, 0, 0, 0.2)"
+        color:  "rgba(255, 127, 127, 0.1)"
       });
     },
 

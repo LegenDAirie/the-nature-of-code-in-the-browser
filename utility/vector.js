@@ -28,6 +28,19 @@
     magnitude: function(){
       return Math.sqrt(this.x * this.x + this.y * this.y)
     },
+
+    divide: function(number){
+      if (number !== 0){
+        return GLB.Vector.create({
+          x: this.x / number,
+          y: this.y / number
+        });
+      };
+    },
+
+    normalize: function(){
+      return this.divide(this.magnitude());
+    }
   };
 
   GLB.Vector = {
