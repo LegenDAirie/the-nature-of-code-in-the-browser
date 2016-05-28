@@ -28,6 +28,10 @@
     },
 
     update: function(){
+      center = GLB.Vector.create({
+        x: GLB.canvas.width / 2,
+        y: GLB.canvas.height / 2
+      });
     },
 
     draw: function(){
