@@ -11,7 +11,7 @@
       });
     },
 
-    sub: function(v){
+    subtract: function(v){
       return GLB.Vector.create({
         x: this.x - v.x,
         y: this.y - v.y
@@ -23,7 +23,11 @@
         x: this.x * number,
         y: this.y * number
       });
-    }
+    },
+
+    magnitude: function(){
+      return Math.sqrt(this.x * this.x + this.y * this.y)
+    },
   };
 
   GLB.Vector = {

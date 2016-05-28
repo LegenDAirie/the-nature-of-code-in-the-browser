@@ -22,7 +22,7 @@
     init: function(){
       GLB.canvas.addEventListener('mousemove', function(event){
         mouse = GLB.Vector.create({x: event.x, y: event.y});
-        end = mouse.sub(center);
+        end = mouse.subtract(center);
         end = end.multiply(0.5);
 
         // line.update({start: center, end: end.add(center)})
