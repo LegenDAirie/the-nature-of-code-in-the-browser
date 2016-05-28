@@ -26,6 +26,13 @@
 
     draw: function(){
       GLB.Draw.line({start: center, end: mouse.add(center)});
+      GLB.Draw.rectangle({
+        startX: 0,
+        startY: 0,
+        endX:   mouse.magnitude(),
+        endY:   10,
+        color: "rgba(0, 0, 0, 0.2)"
+      });
     },
 
     displayTitle: function(){
