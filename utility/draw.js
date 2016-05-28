@@ -23,17 +23,7 @@
       context.fill();
     };
 
-    var text = function({ text, fontSize, fontFamily, x, y, textAlign, color, textBaseline, greyOut }){
-      if (greyOut){
-        GLB.Draw.rectangle({
-          startX: 0,
-          startY: 0,
-          endX: GLB.canvas.width,
-          endY: GLB.canvas.height,
-          color: 'rgba(175, 175, 175, 0.1)'
-        });
-      }
-
+    var text = function({ text, fontSize, fontFamily, x, y, textAlign, color, textBaseline }){
       context.font         = `${fontSize} ${fontFamily}`;
       context.textAlign    = textAlign;
       context.textBaseline = textBaseline;
@@ -54,7 +44,6 @@
       context.fillStyle = color;
       context.fillRect(startX, startY, endX, endY);
       context.stroke();
-
     };
 
     return {
