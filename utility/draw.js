@@ -39,11 +39,17 @@
       context.stroke();
     };
 
-    var rectangle = function({ startX, startY, endX, endY, color }){
+    var rectangle = function({ startX, startY, endX, endY, color, border = false }){
       context.beginPath();
+      context.rect(startX, startY, endX, endY);
       context.fillStyle = color;
-      context.fillRect(startX, startY, endX, endY);
-      context.stroke();
+      context.fill();
+
+      if (border){
+        context.lineWidth = 1;
+        context.strokeStyle = "rgba(0, 0, 0, 1)";
+        context.stroke();
+      }
     };
 
     return {

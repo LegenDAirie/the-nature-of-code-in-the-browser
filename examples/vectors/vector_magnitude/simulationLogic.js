@@ -30,11 +30,12 @@
     draw: function(){
       GLB.Draw.line({start: center, end: mouse.add(center)});
       GLB.Draw.rectangle({
-        startX: 0,
-        startY: 0,
+        startX: 1,
+        startY: 1,
         endX:   mouse.magnitude(),
         endY:   10,
-        color:  "rgba(255, 127, 127, 0.1)"
+        color:  "rgba(255, 127, 127, 0.1)",
+        border: true
       });
     },
 
