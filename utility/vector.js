@@ -60,10 +60,9 @@
     createRandom: function() {
       var vector = Object.create(VECTOR_PROTOTYPE);
       var angle1 = Math.random() * 2 * Math.PI;
-      var angle2 = Math.random() * 2 * Math.PI;
 
       vector.x = Math.cos(angle1);
-      vector.y = Math.sin(angle2);
+      vector.y = Math.sin(angle1);
 
       return vector;
     }
