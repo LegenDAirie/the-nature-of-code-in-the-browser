@@ -14,6 +14,7 @@
   var topSpeed = 10;
 
   ball.acceleration = GLB.Vector.create({x: 0, y: 0.01});
+  ball.velocity = GLB.Vector.create({x: 0.2, y: 0});
 
   GLB.simulationLogic = {
 
@@ -23,7 +24,7 @@
       if (ball.velocity.magnitude() > topSpeed){
         ball.velocity = ball.velocity.setMagnitude(topSpeed);
       }
-      
+
       GLB.Screen_edges.wrap_around_screen(ball);
     },
 
