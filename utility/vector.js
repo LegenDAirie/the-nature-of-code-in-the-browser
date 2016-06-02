@@ -40,6 +40,10 @@
 
     normalize: function(){
       return this.divide(this.magnitude());
+    },
+
+    setMagnitude: function(magnitude){
+      return this.normalize().multiply(magnitude);
     }
   };
 
