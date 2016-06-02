@@ -16,7 +16,7 @@
     update: function(){
       _.forEach(balls, function(ball){
         ball.update();
-        GLB.Screen_edges.reflective_edges(ball);
+        GLB.Screen_edges.reflect_off_edges(ball);
       })
     },
 

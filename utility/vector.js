@@ -44,6 +44,14 @@
 
     setMagnitude: function(magnitude){
       return this.normalize().multiply(magnitude);
+    },
+
+    limit: function(maxMagnitude){
+      if (this.magnitude() > maxMagnitude){
+        return this.setMagnitude(maxMagnitude);
+      } else {
+        return this;
+      }
     }
   };
 

@@ -25,7 +25,7 @@
       }
     }
 
-    var reflective_edges = function(object){
+    var reflect_off_edges = function(object){
       //right edge
       if (object.location.x > GLB.canvas.width - object.radius){
         object.location.x = GLB.canvas.width - object.radius;
@@ -50,7 +50,7 @@
 
     return{
       wrap_around_screen: wrap_around_screen,
-      reflective_edges: reflective_edges
+      reflect_off_edges: reflect_off_edges
     }
 
   }

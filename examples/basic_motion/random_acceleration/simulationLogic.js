@@ -4,6 +4,7 @@
   var GLB = window.GLB = window.GLB || {};
 
   var title = GLB.Title.create("Random Acceleration");
+  var topSpeed = 3;
   var ball  = GLB.Ball.create({
     x: GLB.canvas.width / 2,
     y: GLB.canvas.height / 2,
@@ -12,14 +13,17 @@
   });
 
 
+
   ball.acceleration = GLB.Vector.createRandom();
 
 
   GLB.simulationLogic = {
 
     update: function(){
-      console.log(ball.acceleration.magnitude());
+      ball.acceleration = GLB.Vector.createRandom();
       ball.update();
+      ball.velocity = ball.velocity.limit(topSpeed);
+
       GLB.Screen_edges.wrap_around_screen(ball);
     },
 
