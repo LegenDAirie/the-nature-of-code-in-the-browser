@@ -5,7 +5,6 @@
 
   var COLOR = 'rgba(0, 0, 0, .1)';
   var SCALE = 0.5;
-  var title = GLB.Title.create("Fractal")
 
   var drawFractal = function(x, y, radius, angle = 0, recursiveLayer = 0) {
     GLB.Draw.circle({x, y, radius, color: COLOR});
@@ -38,10 +37,5 @@
     draw: function () {
       drawFractal(GLB.canvas.width / 2, GLB.canvas.height / 2, 100)
     },
-
-    displayTitle: function() {
-      title.display();
-    }
-
   }
 })();

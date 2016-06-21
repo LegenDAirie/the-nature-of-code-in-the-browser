@@ -7,12 +7,10 @@
 
     start: function(){
       var self = this;
-      this.props.displayTitle.call(this);
 
       window.addEventListener("resize", function(){
         GLB.canvas.setAttribute('width', window.innerWidth);
         GLB.canvas.setAttribute('height', window.innerHeight);
-        self.props.displayTitle.call(this);
       });
 
       GLB.canvas.addEventListener('mouseover', function(){
@@ -22,7 +20,6 @@
 
       GLB.canvas.addEventListener('mouseout', function(){
         self.animate = false;
-        self.props.displayTitle.call(this);
       });
 
       if (this.props.init){
@@ -53,7 +50,7 @@
   }
 
   GLB.Simulation = {
-    create: function({ draw, init = null, update, displayTitle }){
+    create: function({ draw, init = null, update }){
 
       var simulation = Object.create(SIMULATION_PROTOTYPE);
 
@@ -61,7 +58,6 @@
       simulation.props.draw         = draw;
       simulation.props.update       = update;
       simulation.props.init         = init;
-      simulation.props.displayTitle = displayTitle;
 
       return simulation;
     }

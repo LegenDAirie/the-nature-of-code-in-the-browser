@@ -3,7 +3,6 @@
 (function(){
   var GLB = window.GLB = window.GLB || {};
 
-  var title = GLB.Title.create("Acceleration Towards Mouse");
   var ball = GLB.Ball.createRandom();
   var topSpeed = 5;
   var mouse = GLB.Vector.create({x: 0, y: 0});
@@ -26,10 +25,6 @@
 
     draw: function(){
       ball.draw();
-    },
-
-    displayTitle: function(){
-      title.display();
     },
   }
 })();

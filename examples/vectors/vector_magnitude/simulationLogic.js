@@ -3,7 +3,6 @@
 (function(){
   var GLB = window.GLB = window.GLB || {};
 
-  var title = GLB.Title.create("Vector Magnitude")
   var mouse = GLB.Vector.create({x: 0, y: 0});
   var center = GLB.Vector.create({
     x: GLB.canvas.width / 2,
@@ -39,8 +38,5 @@
       });
     },
 
-    displayTitle: function(){
-      title.display();
-    },
   }
 })();

@@ -3,8 +3,6 @@
 (function(){
   var GLB = window.GLB = window.GLB || {};
 
-  var title = GLB.Title.create("Vector Subtraction");
-
   var mouse  = GLB.Vector.create({x: 0, y: 0});
   var end    = GLB.Vector.create({x: 0, y: 0});
   var center = GLB.Vector.create({
@@ -39,8 +37,5 @@
       GLB.Draw.line({start: center, end: end.add(center)});
     },
 
-    displayTitle: function(){
-      title.display({start: center, end: end.add(center)});
-    }
   }
 })();

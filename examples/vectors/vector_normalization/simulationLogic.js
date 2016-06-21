@@ -4,7 +4,6 @@
   var GLB = window.GLB = window.GLB || {};
 
 
-  var title  = GLB.Title.create("Vector Normalization")
   var mouse  = GLB.Vector.create({x: 0, y: 0});
   var center = GLB.Vector.create({
     x: GLB.canvas.width / 2,
@@ -34,9 +33,6 @@
       GLB.Draw.circle({x: center.x, y: center.y, radius: 100, color: "rgba(255, 127, 127, 0.1)"});
     },
 
-    displayTitle: function(){
-      title.display();
-    },
   };
 
 })();

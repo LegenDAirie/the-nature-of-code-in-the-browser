@@ -3,7 +3,6 @@
 (function(){
   var GLB = window.GLB = window.GLB || {};
 
-  var title = GLB.Title.create("Constant Acceleration");
   var ball  = GLB.Ball.create({
     x: GLB.canvas.width / 2,
     y: GLB.canvas.height / 2,
@@ -30,10 +29,6 @@
 
     draw: function(){
       ball.draw();
-    },
-
-    displayTitle: function(){
-      title.display();
     },
   }
 })();
