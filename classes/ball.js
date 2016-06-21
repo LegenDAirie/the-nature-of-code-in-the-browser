@@ -40,7 +40,7 @@
 
       ball.velocity     = GLB.Vector.createRandom();
       ball.acceleration = GLB.Vector.create({x: 0, y: 0});
-      ball.radius       = _.random(10, 40);
+      ball.radius       = _.random(10, 30);
       ball.location     = GLB.Vector.create({
         x: _.random(0, GLB.canvas.width),
         y: _.random(0, GLB.canvas.height),
