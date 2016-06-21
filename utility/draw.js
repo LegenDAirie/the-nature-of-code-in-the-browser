@@ -52,11 +52,22 @@
       }
     };
 
+    var greyOut = function(){
+      GLB.Draw.rectangle({
+        startX: 0,
+        startY: 0,
+        endX: GLB.canvas.width,
+        endY: GLB.canvas.height,
+        color: 'rgba(175, 175, 175, 0.1)'
+      });
+    };
+
     return {
       circle,
       text,
       line,
-      rectangle
+      rectangle,
+      greyOut
     }
   }
 

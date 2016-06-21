@@ -7,10 +7,12 @@
 
     start: function(){
       var self = this;
+      GLB.Draw.greyOut();
 
       window.addEventListener("resize", function(){
         GLB.canvas.setAttribute('width', window.innerWidth);
         GLB.canvas.setAttribute('height', window.innerHeight);
+        GLB.Draw.greyOut();
       });
 
       GLB.canvas.addEventListener('mouseover', function(){
@@ -20,6 +22,7 @@
 
       GLB.canvas.addEventListener('mouseout', function(){
         self.animate = false;
+        GLB.Draw.greyOut();
       });
 
       if (this.props.init){
