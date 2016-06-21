@@ -28,6 +28,7 @@
       ball.velocity     = GLB.Vector.create({x: 0, y: 0});
       ball.acceleration = GLB.Vector.create({x: 0, y: 0});
       ball.radius       = radius || 20;
+      ball.mass         = ball.radius * ball.radius * Math.PI; // volume
 
       ball.color = `rgba(${r}, ${g}, ${b}, ${a})`
 
@@ -37,14 +38,15 @@
     createRandom: function(){
       var ball = Object.create(BALL_PROTOTYPE);
 
-
-      ball.velocity     = GLB.Vector.createRandom();
-      ball.acceleration = GLB.Vector.create({x: 0, y: 0});
-      ball.radius       = _.random(10, 30);
       ball.location     = GLB.Vector.create({
         x: _.random(0, GLB.canvas.width),
         y: _.random(0, GLB.canvas.height),
       });
+
+      ball.velocity     = GLB.Vector.createRandom();
+      ball.acceleration = GLB.Vector.create({x: 0, y: 0});
+      ball.radius       = _.random(10, 30);
+      ball.mass         = ball.radius * ball.radius * Math.PI; // volume
 
       var r = Math.floor(Math.random() * 255);
       var g = Math.floor(Math.random() * 255);
