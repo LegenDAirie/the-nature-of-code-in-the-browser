@@ -21,11 +21,11 @@
   }
 
   GLB.Ball = {
-    create: function({ x, y, radius, color: { r, g, b, a } }){
+    create: function({ x, y, radius, velocity, color: { r, g, b, a } }){
       var ball = Object.create(BALL_PROTOTYPE);
 
       ball.location     = GLB.Vector.create({x: x, y: y});
-      ball.velocity     = GLB.Vector.create({x: 0, y: 0});
+      ball.velocity     = velocity || GLB.Vector.create({x: 0, y: 0});
       ball.acceleration = GLB.Vector.create({x: 0, y: 0});
       ball.radius       = radius || 20;
       ball.mass         = ball.radius * ball.radius * Math.PI; // volume
@@ -36,26 +36,19 @@
     },
 
     createRandom: function(){
-      var ball = Object.create(BALL_PROTOTYPE);
-
-      ball.location     = GLB.Vector.create({
-        x: _.random(0, GLB.canvas.width),
-        y: _.random(0, GLB.canvas.height),
-      });
-
-      ball.velocity     = GLB.Vector.createRandom();
-      ball.acceleration = GLB.Vector.create({x: 0, y: 0});
-      ball.radius       = _.random(10, 30);
-      ball.mass         = ball.radius * ball.radius * Math.PI; // volume
+      var x        = _.random(0, GLB.canvas.width);
+      var y        = _.random(0, GLB.canvas.height);
+      var velocity = GLB.Vector.createRandom();
+      var radius   = _.random(10, 30);
 
       var r = Math.floor(Math.random() * 255);
       var g = Math.floor(Math.random() * 255);
       var b = Math.floor(Math.random() * 255);
       var a = 0.2;
 
-      ball.color = `rgba(${r}, ${g}, ${b}, ${a})`
+      var color = {r, g, b, a};
 
-      return ball;
+      return GLB.Ball.create({x, y, velocity, radius, color});
     }
   }
 })();
