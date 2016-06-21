@@ -3,17 +3,19 @@
 (function(){
   var GLB = window.GLB = window.GLB || {};
 
-  GLB.Force = function(){
+  var Force = function(){
 
-    var applyNetForce = function(object, force){
+    var applyNetForce = function({ object, force }){
+      force = force || GLB.Vector.create({x: 0, y: 0});
+
       force = force.divide(object.mass);
-      var acceleration = object.acceleration.add(force);
-
-      return acceleration;
+      object.acceleration = object.acceleration.add(force);
     };
 
     return {
-      applyForce: applyForce
+      applyNetForce: applyNetForce
     };
   }
+
+  GLB.Force = Force();
 })();
