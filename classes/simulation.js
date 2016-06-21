@@ -15,13 +15,15 @@
         GLB.Draw.greyOut();
       });
 
-      GLB.canvas.addEventListener('mouseover', function(){
+      GLB.canvasContainer.addEventListener('mouseover', function(){
         self.animate = true;
+        GLB.title.classList.add('display-none');
         self.animateLoop();
       });
 
-      GLB.canvas.addEventListener('mouseout', function(){
+      GLB.canvasContainer.addEventListener('mouseout', function(){
         self.animate = false;
+        GLB.title.classList.remove('display-none');
         GLB.Draw.greyOut();
       });
 
