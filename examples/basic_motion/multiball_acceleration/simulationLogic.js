@@ -7,9 +7,10 @@
   var topSpeed = 5;
   var mouse = GLB.Vector.create({x: 0, y: 0});
 
-  for (var i = 0; i < 10; i++) {
-    balls.push(GLB.Ball.createRandom());
-  }
+  _.times(10, function(){
+      var ball = GLB.Ball.createRandom();
+      balls.push(ball);
+  });
 
   GLB.simulationLogic = {
 

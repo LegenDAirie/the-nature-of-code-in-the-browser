@@ -3,26 +3,18 @@
 (function(){
   var GLB = window.GLB = window.GLB || {};
 
-  var balls = [];
-
-  _.times(5, function(){
-    var ball = GLB.Ball.createRandom();
-    balls.push(ball);
-  })
+  var ball = GLB.Ball.createRandom();
+  ball.velocity = ball.velocity.multiply(3);
 
   GLB.simulationLogic = {
 
     update: function(){
-      _.forEach(balls, function(ball){
-        ball.update();
-        GLB.Screen_edges.reflect_off_edges(ball);
-      })
+      ball.update();
+      GLB.Screen_edges.reflect_off_edges(ball);
     },
 
     draw: function(){
-      _.forEach(balls, function(ball){
-        ball.draw();
-      })
+      ball.draw();
     },
   }
 })();
