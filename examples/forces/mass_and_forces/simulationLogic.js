@@ -15,8 +15,7 @@
     var ball = GLB.Ball.create({
       x: STARTING_POINT_X,
       y: STARTING_POINT_Y,
-      radius: _.random(10, 30),
-      color: {r: 255, g: 127, b: 127, a: 0.2}
+      radius: _.random(10, 30)
     });
 
     var GravitationalForce = GRAVITY.multiply(ball.mass);
