@@ -6,8 +6,8 @@
   const STARTING_POINT_X = GLB.canvas.width / 5;
   const STARTING_POINT_Y = GLB.canvas.height / 4;
 
-  const WIND = GLB.Vector.create({x: 10, y: 0});
-  const GRAVITY = GLB.Vector.create({x: 0, y: 0.03});
+  const WIND = GLB.Vector.create({x: 5, y: 0});
+  const GRAVITY = GLB.Vector.create({x: 0, y: 0.02});
 
   var balls = [];
 
