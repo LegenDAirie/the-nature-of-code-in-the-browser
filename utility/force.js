@@ -5,15 +5,24 @@
 
   var Force = function(){
 
-    var applyNetForce = function({ object, force }){
-      force = force || GLB.Vector.create({x: 0, y: 0});
+    var applyNetForce = function({ object, NetForce }){
+      NetForce = NetForce || GLB.Vector.create({x: 0, y: 0});
 
-      force = force.divide(object.mass);
-      object.acceleration = object.acceleration.add(force);
+      NetForce = NetForce.divide(object.mass);
+      object.acceleration = object.acceleration.add(NetForce);
+    };
+
+    var calculateForce = function(forces){
+      forces = forces || [];
+
+      return _.reduce(forces, function(NetForce, force){
+        return NetForce.add(force);
+      });
     };
 
     return {
-      applyNetForce: applyNetForce
+      applyNetForce: applyNetForce,
+      calculateForce: calculateForce
     };
   }
 
