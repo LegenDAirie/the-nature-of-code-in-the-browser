@@ -18,6 +18,8 @@
       radius: _.random(10, 30)
     });
 
+    ball.location.y = ball.location.y - ball.radius;
+
     var GravitationalForce = GRAVITY.multiply(ball.mass);
     var NetForce = GLB.Force.calculateForce([WIND, GravitationalForce]);
     GLB.Force.applyNetForce({object: ball, NetForce});
