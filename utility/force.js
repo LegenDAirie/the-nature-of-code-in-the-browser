@@ -9,7 +9,7 @@
       NetForce = NetForce || GLB.Vector.create({x: 0, y: 0});
 
       NetForce = NetForce.divide(object.mass);
-      object.acceleration = object.acceleration.add(NetForce);
+      object.acceleration = NetForce.returnNewCopy();
     };
 
     var calculateForce = function(forces){

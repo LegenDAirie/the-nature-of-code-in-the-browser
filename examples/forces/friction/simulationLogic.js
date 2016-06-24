@@ -5,8 +5,11 @@
 
   const STARTING_POINT_Y = GLB.canvas.height / 4;
 
-  const WIND = GLB.Vector.create({x: 10, y: 0});
+  const WIND    = GLB.Vector.create({x: 20, y: 0});
   const GRAVITY = GLB.Vector.create({x: 0, y: 0.1});
+
+  const C = 20; //coefficient of friction
+
 
   var balls = [];
 
@@ -19,19 +22,22 @@
 
     ball.location.y = ball.location.y - ball.radius;
 
-    var GravitationalForce = GRAVITY.multiply(ball.mass);
-    var NetForce = GLB.Force.calculateForce([WIND, GravitationalForce]);
-    GLB.Force.applyNetForce({object: ball, NetForce});
-
     balls.push(ball);
   });
-
 
   GLB.simulationLogic = {
 
     update: function(){
       _.forEach(balls, function(ball){
-        ball.velocity = ball.velocity.multiply(0.99);
+        var friction = ball.velocity.returnNegativeCopy();
+        friction = friction.normalize();
+        friction = friction.multiply(C);
+
+
+        var GravitationalForce = GRAVITY.multiply(ball.mass);
+        var NetForce = GLB.Force.calculateForce([WIND, GravitationalForce, friction]);
+        GLB.Force.applyNetForce({object: ball, NetForce});
+
         ball.update();
         GLB.Screen_edges.reflect_off_edges(ball);
       });

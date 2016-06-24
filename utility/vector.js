@@ -35,6 +35,8 @@
           x: this.x / number,
           y: this.y / number
         });
+      } else {
+        return this;
       };
     },
 
@@ -52,6 +54,14 @@
       } else {
         return this;
       }
+    },
+
+    returnNegativeCopy: function(){
+      return GLB.Vector.create({x: -this.x, y: -this.y});
+    },
+
+    returnNewCopy: function(){
+      return GLB.Vector.create({x: this.x, y: this.y});
     }
   };
 
