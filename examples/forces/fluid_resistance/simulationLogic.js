@@ -3,12 +3,8 @@
 (function(){
   var GLB = window.GLB = window.GLB || {};
 
-  const STARTING_POINT_Y = GLB.canvas.height / 4;
-
+  const STARTING_POINT_OF_BALLS_Y = GLB.canvas.height / 4;
   const GRAVITY = GLB.Vector.create({x: 0, y: 0.1});
-
-  const C = 20; //coefficient of friction
-
 
   var balls = [];
 
@@ -24,7 +20,7 @@
   _.times(10, function(){
     var ball = GLB.Ball.create({
       x:      _.random(30, GLB.canvas.width),
-      y:      STARTING_POINT_Y,
+      y:      STARTING_POINT_OF_BALLS_Y,
       radius: _.random(10, 30)
     });
 

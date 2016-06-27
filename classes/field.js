@@ -29,10 +29,8 @@
     calculateForce: function({ object }){
       if (this.isInsideField(object)){
         var forceMagnitude = this.calculateForceMagnitude(object);
-        console.log(forceMagnitude)
         var forceDirection = this.calculateForceDirection(object);
         var fieldForce = forceDirection.multiply(forceMagnitude);
-        // console.log(fieldForce)
 
         return fieldForce
       } else {
