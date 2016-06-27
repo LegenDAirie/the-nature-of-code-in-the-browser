@@ -3,6 +3,32 @@
 (function(){
   var GLB = window.GLB = window.GLB || {};
 
+  var isInsideField =  function(self, object){
+    var leftSide = self.TopLeftX - object.radius;
+    var rightSide = self.bottomRightX + object.radius;
+    var topSide = self.TopLeftY - object.radius;
+    var bottomSide = self.bottomRightY + object.radius;
+
+    var betweenLeftAndRight = _.inRange(object.location.x, leftSide, rightSide);
+    var betweenTopAndBottom = _.inRange(object.location.y, topSide, bottomSide);
+
+    return betweenLeftAndRight && betweenTopAndBottom
+  };
+
+  var calculateForceMagnitude = function(self, object){
+    var speedOfObject = object.velocity.magnitude();
+    var fieldForceMagnitude = self.coefficient * speedOfObject * speedOfObject;
+
+    return fieldForceMagnitude
+  };
+
+  var calculateForceDirection = function(object){
+    var direction = object.velocity.returnNegativeCopy();
+    direction = direction.normalize();
+
+    return direction
+  };
+
   var FIELD_PROTOTYPE = {
     draw: function(){
       GLB.Draw.rectangle({
@@ -14,22 +40,11 @@
       });
     },
 
-    isInsideField: function(object){
-      var leftSide = this.TopLeftX - object.radius;
-      var rightSide = this.bottomRightX + object.radius;
-      var topSide = this.TopLeftY - object.radius;
-      var bottomSide = this.bottomRightY + object.radius;
-
-      var betweenLeftAndRight = _.inRange(object.location.x, leftSide, rightSide);
-      var betweenTopAndBottom = _.inRange(object.location.y, topSide, bottomSide);
-
-      return betweenLeftAndRight && betweenTopAndBottom
-    },
-
     calculateForce: function({ object }){
-      if (this.isInsideField(object)){
-        var forceMagnitude = this.calculateForceMagnitude(object);
-        var forceDirection = this.calculateForceDirection(object);
+      var self = this;
+      if (isInsideField(self, object)){
+        var forceMagnitude = calculateForceMagnitude(self, object);
+        var forceDirection = calculateForceDirection(object);
         var fieldForce = forceDirection.multiply(forceMagnitude);
 
         return fieldForce
@@ -38,19 +53,6 @@
       }
     },
 
-    calculateForceMagnitude: function(object){
-      var speedOfObject = object.velocity.magnitude();
-      var fieldForceMagnitude = this.coefficient * speedOfObject * speedOfObject;
-
-      return fieldForceMagnitude
-    },
-
-    calculateForceDirection: function(object){
-      var direction = object.velocity.returnNegativeCopy();
-      direction = direction.normalize();
-
-      return direction
-    }
   };
 
   GLB.Field = {
@@ -63,7 +65,7 @@
       field.bottomRightY = bottomRightY;
       field.coefficient  = coefficient;
 
-      //doesnt work if r,g,b or a is 0
+      //doesnt work if r, g, b or a is 0
       var r = color && color.r || Math.floor(Math.random() * 255);
       var g = color && color.g || Math.floor(Math.random() * 255);
       var b = color && color.b || Math.floor(Math.random() * 255);
