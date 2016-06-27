@@ -14,17 +14,18 @@
   var balls = [];
 
   var liquid = GLB.Field.create({
-    TopLeftX: 0,
-    TopLeftY: GLB.canvas.height * 0.75,
+    TopLeftX:     0,
+    TopLeftY:     GLB.canvas.height * 0.75,
     bottomRightX: GLB.canvas.width,
     bottomRightY: GLB.canvas.height,
-    color: { r: 1, g: 1, b: 1, a: 0.2}
+    color:        { r: 1, g: 1, b: 1, a: 0.2},
+    coefficient:  40
   });
 
   _.times(10, function(){
     var ball = GLB.Ball.create({
-      x: _.random(30, GLB.canvas.width * 0.75),
-      y: STARTING_POINT_Y,
+      x:      _.random(30, GLB.canvas.width * 0.75),
+      y:      STARTING_POINT_Y,
       radius: _.random(10, 30)
     });
 
@@ -38,24 +39,25 @@
       window.addEventListener("resize", function(){
 
         liquid = GLB.Field.create({
-          TopLeftX: 0,
-          TopLeftY: GLB.canvas.height * 0.75,
+          TopLeftX:     0,
+          TopLeftY:     GLB.canvas.height * 0.75,
           bottomRightX: GLB.canvas.width,
           bottomRightY: GLB.canvas.height,
-          color: { r: 1, g: 1, b: 1, a: 0.2}
+          color:        { r: 1, g: 1, b: 1, a: 0.2},
+          coefficient:  40
         });
       })
     },
 
     update: function(){
       _.forEach(balls, function(ball){
-        var friction = ball.velocity.returnNegativeCopy();
-        friction = friction.normalize();
-        friction = friction.multiply(C);
+        // resistance = resistance.normalize();
+        // friction = friction.multiply(C);
 
 
+        // var resistance = GLB.liquid.calculateForce();
         var GravitationalForce = GRAVITY.multiply(ball.mass);
-        var NetForce = GLB.Force.calculateForce([WIND, GravitationalForce, friction]);
+        var NetForce = GLB.Force.calculateForce([WIND, GravitationalForce]);
         GLB.Force.applyNetForce({object: ball, NetForce});
 
         ball.update();

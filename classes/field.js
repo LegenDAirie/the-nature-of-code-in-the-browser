@@ -12,17 +12,31 @@
         endY: this.bottomRightY,
         color: this.color,
       });
-    }
+    },
+
+    isInsideField: function(object){
+      var leftSide = this.TopLeftX - object.radius;
+      var rightSide = this.bottomRightX + object.radius;
+      var topSide = this.TopLeftY - object.radius;
+      var bottomSide = this.bottomRightY + object.radius;
+
+      var betweenLeftAndRight = _.inRange(object.x, leftSide, rightSide);
+      var betweenTopAndBottom = _.inRange(object.y, topSide, bottomSide);
+
+      return betweenLeftAndRight && betweenTopAndBottom
+    },
+
   };
 
   GLB.Field = {
-    create: function({ TopLeftX, TopLeftY, bottomRightX, bottomRightY, color }){
+    create: function({ TopLeftX, TopLeftY, bottomRightX, bottomRightY, color, coefficient }){
       var field = Object.create(FIELD_PROTOTYPE);
 
       field.TopLeftX     = TopLeftX;
       field.TopLeftY     = TopLeftY;
       field.bottomRightX = bottomRightX;
       field.bottomRightY = bottomRightY;
+      field.coefficient  = coefficient;
 
       //doesnt work if r,g,b or a is 0
       var r = color && color.r || Math.floor(Math.random() * 255);
