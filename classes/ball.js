@@ -46,13 +46,6 @@
       var velocity = GLB.Vector.createRandom();
       var radius   = _.random(10, 30);
 
-      // var r = Math.floor(Math.random() * 255);
-      // var g = Math.floor(Math.random() * 255);
-      // var b = Math.floor(Math.random() * 255);
-      // var a = 0.2;
-
-      // var color = {r, g, b, a};
-
       return GLB.Ball.create({x, y, velocity, radius});
     }
   }
