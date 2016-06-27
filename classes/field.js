@@ -20,12 +20,39 @@
       var topSide = this.TopLeftY - object.radius;
       var bottomSide = this.bottomRightY + object.radius;
 
-      var betweenLeftAndRight = _.inRange(object.x, leftSide, rightSide);
-      var betweenTopAndBottom = _.inRange(object.y, topSide, bottomSide);
+      var betweenLeftAndRight = _.inRange(object.location.x, leftSide, rightSide);
+      var betweenTopAndBottom = _.inRange(object.location.y, topSide, bottomSide);
 
       return betweenLeftAndRight && betweenTopAndBottom
     },
 
+    calculateForce: function({ object }){
+      if (this.isInsideField(object)){
+        var forceMagnitude = this.calculateForceMagnitude(object);
+        console.log(forceMagnitude)
+        var forceDirection = this.calculateForceDirection(object);
+        var fieldForce = forceDirection.multiply(forceMagnitude);
+        // console.log(fieldForce)
+
+        return fieldForce
+      } else {
+        return GLB.Vector.create({x: 0, y: 0});
+      }
+    },
+
+    calculateForceMagnitude: function(object){
+      var speedOfObject = object.velocity.magnitude();
+      var fieldForceMagnitude = this.coefficient * speedOfObject * speedOfObject;
+
+      return fieldForceMagnitude
+    },
+
+    calculateForceDirection: function(object){
+      var direction = object.velocity.returnNegativeCopy();
+      direction = direction.normalize();
+
+      return direction
+    }
   };
 
   GLB.Field = {

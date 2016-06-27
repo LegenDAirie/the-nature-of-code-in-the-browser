@@ -5,7 +5,6 @@
 
   const STARTING_POINT_Y = GLB.canvas.height / 4;
 
-  const WIND    = GLB.Vector.create({x: 20, y: 0});
   const GRAVITY = GLB.Vector.create({x: 0, y: 0.1});
 
   const C = 20; //coefficient of friction
@@ -24,7 +23,7 @@
 
   _.times(10, function(){
     var ball = GLB.Ball.create({
-      x:      _.random(30, GLB.canvas.width * 0.75),
+      x:      _.random(30, GLB.canvas.width),
       y:      STARTING_POINT_Y,
       radius: _.random(10, 30)
     });
@@ -51,13 +50,9 @@
 
     update: function(){
       _.forEach(balls, function(ball){
-        // resistance = resistance.normalize();
-        // friction = friction.multiply(C);
-
-
-        // var resistance = GLB.liquid.calculateForce();
+        var resistance = liquid.calculateForce({object: ball});
         var GravitationalForce = GRAVITY.multiply(ball.mass);
-        var NetForce = GLB.Force.calculateForce([WIND, GravitationalForce]);
+        var NetForce = GLB.Force.calculateForce([GravitationalForce, resistance]);
         GLB.Force.applyNetForce({object: ball, NetForce});
 
         ball.update();
