@@ -37,7 +37,7 @@
       _.forEach(objects, function(object){
         _.forEach(objects, function(otherObject){
           if (object != otherObject){
-            var force = calculateGravitationalForce(object, otherObject, G);
+            var force = calculateGravitationalForce({self: object, object: otherObject, G});
             applyForce({object, force});
           }
         });
