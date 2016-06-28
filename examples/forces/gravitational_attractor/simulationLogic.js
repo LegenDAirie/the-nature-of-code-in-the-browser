@@ -3,9 +3,10 @@
 (function(){
   var GLB = window.GLB = window.GLB || {};
 
+  var G = 0.2; //gravitational constant
+
   var balls = [];
 
-  // var attractor = GLB.Attractor.createRandom();
   var attractor = GLB.Attractor.create({
     x: GLB.canvas.width / 2,
     y: GLB.canvas.height / 2,
@@ -15,19 +16,18 @@
 
   _.times(8, function(){
     var ball = GLB.Ball.createRandom();
-    ball.velocity = ball.velocity.multiply(3);
+    ball.velocity = ball.velocity.multiply(1);
     balls.push(ball);
   });
-
-
-
 
   GLB.simulationLogic = {
 
     update: function(){
       _.forEach(balls, function(ball){
 
-        attractor.applyForce({object: ball});
+        var attraction = attractor.calculateForce({object: ball, G});
+
+        GLB.Force.applyForce({object: ball, force: attraction});
 
         ball.update();
         ball.acceleration = ball.acceleration.multiply(0);

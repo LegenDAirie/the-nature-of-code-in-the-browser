@@ -9,7 +9,7 @@
       return distance > object.radius + self.radius
     };
 
-    var calculateForce = function(self, object, G){
+    var calculateGravitationalForce = function({ self, object, G }){
 
       var direction = object.location.subtract(self.location);
       var distance = direction.magnitude();
@@ -24,7 +24,7 @@
       return force;
     };
 
-    var applyForce = function(object, force){
+    var applyForce = function({ object, force }){
       force = force || GLB.Vector.create({x: 0, y: 0});
 
       force = force.divide(object.mass);
@@ -37,15 +37,17 @@
       _.forEach(objects, function(object){
         _.forEach(objects, function(otherObject){
           if (object != otherObject){
-            var force = calculateForce(object, otherObject, G);
-            applyForce(object, force);
+            var force = calculateGravitationalForce(object, otherObject, G);
+            applyForce({object, force});
           }
         });
       });
     };
 
     return {
-      everythingAttractsEverything
+      everythingAttractsEverything,
+      applyForce,
+      calculateGravitationalForce
     };
   }
 

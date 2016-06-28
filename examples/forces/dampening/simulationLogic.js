@@ -19,9 +19,10 @@
 
     ball.location.y = ball.location.y - ball.radius;
 
-    var GravitationalForce = GRAVITY.multiply(ball.mass);
-    var NetForce = GLB.Force.calculateForce([WIND, GravitationalForce]);
-    GLB.Force.applyNetForce({object: ball, NetForce});
+    var gravity = GRAVITY.multiply(ball.mass);
+
+    GLB.Force.applyForce({object: ball, force: WIND});
+    GLB.Force.applyForce({object: ball, force: gravity});
 
     balls.push(ball);
   });

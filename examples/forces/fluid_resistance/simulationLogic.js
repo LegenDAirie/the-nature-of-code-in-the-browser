@@ -39,7 +39,7 @@
           bottomRightX: GLB.canvas.width,
           bottomRightY: GLB.canvas.height,
           color:        { r: 1, g: 1, b: 1, a: 0.2},
-          coefficient:  40
+          coefficient:  800
         });
       })
     },
@@ -47,11 +47,12 @@
     update: function(){
       _.forEach(balls, function(ball){
         var resistance = liquid.calculateForce({object: ball});
-        var GravitationalForce = GRAVITY.multiply(ball.mass);
-        var NetForce = GLB.Force.calculateForce([GravitationalForce, resistance]);
-        GLB.Force.applyNetForce({object: ball, NetForce});
+        var gravity = GRAVITY.multiply(ball.mass);
+        GLB.Force.applyForce({object: ball, force: gravity});
+        GLB.Force.applyForce({object: ball, force: resistance});
 
         ball.update();
+        ball.acceleration = ball.acceleration.multiply(0);
         GLB.Screen_edges.reflect_off_edges(ball);
       });
     },

@@ -5,6 +5,10 @@
 
   var ATTRACTOR_PROTOTYPE = {
 
+    calculateForce: function({ object, G }){
+      return GLB.Force.calculateGravitationalForce({object: this, self: object, G})
+    },
+
     draw: function(){
 
       GLB.Draw.circle({
