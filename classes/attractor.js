@@ -3,29 +3,7 @@
 (function(){
   var GLB = window.GLB = window.GLB || {};
 
-  var rightDistanceAway = function(distance, self, object){
-    return distance > object.radius + self.radius
-  };
-
-  var calculateForce = function(self, object){
-
-    var direction = self.location.subtract(object.location);
-    var distance = direction.magnitude();
-    var force = GLB.Vector.create({x: 0, y: 0});
-
-    if (rightDistanceAway(distance, self, object)){
-      var strength = self.mass / (distance * distance);
-      force = direction.normalize().multiply(strength);
-    }
-    return force;
-  };
-
   var ATTRACTOR_PROTOTYPE = {
-    applyForce: function({ object }){
-      var force = calculateForce(this, object);
-
-      object.acceleration = object.acceleration.add(force);
-    },
 
     draw: function(){
 
