@@ -13,8 +13,9 @@
     mass: 3000,
   });
 
-  _.times(5, function(){
+  _.times(8, function(){
     var ball = GLB.Ball.createRandom();
+    ball.velocity = ball.velocity.multiply(3);
     balls.push(ball);
   });
 
@@ -26,9 +27,10 @@
     update: function(){
       _.forEach(balls, function(ball){
 
-        attractor.applyForce(ball);
+        attractor.applyForce({object: ball});
 
         ball.update();
+        ball.acceleration = ball.acceleration.multiply(0);
       });
     },
 
