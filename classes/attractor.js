@@ -27,11 +27,6 @@
       object.acceleration = object.acceleration.add(force);
     },
 
-    update: function(){
-      this.velocity = this.velocity.add(this.acceleration);
-      this.location = this.location.add(this.velocity);
-    },
-
     draw: function(){
 
       GLB.Draw.circle({
@@ -44,12 +39,10 @@
   };
 
   GLB.Attractor = {
-    create: function({ x, y, radius, velocity, color, mass }){
+    create: function({ x, y, radius, color, mass }){
       var attractor = Object.create(ATTRACTOR_PROTOTYPE);
 
       attractor.location     = GLB.Vector.create({x: x, y: y});
-      attractor.velocity     = velocity || GLB.Vector.create({x: 0, y: 0});
-      attractor.acceleration = GLB.Vector.create({x: 0, y: 0});
       attractor.radius       = radius || 20;
 
       var r = color && color.r || 1;
@@ -59,7 +52,7 @@
 
       attractor.color = `rgba(${r}, ${g}, ${b}, ${a})`;
 
-      attractor.mass = mass || attractor.mass;
+      attractor.mass = mass || radius * radius * Math.PI;
 
       return attractor;
     },
@@ -67,11 +60,10 @@
     createRandom: function(){
       var x        = _.random(0, GLB.canvas.width);
       var y        = _.random(0, GLB.canvas.height);
-      var velocity = GLB.Vector.createRandom();
-      var radius   = _.random(5, 15);
-      var mass     = radius * radius * Math.PI * _.random(1, 7);
+      var radius   = _.random(5, 20);
+      var mass     = radius * radius * Math.PI;
 
-      return GLB.Attractor.create({x, y, velocity, radius, mass});
+      return GLB.Attractor.create({x, y, radius, mass});
     }
   };
 })();
