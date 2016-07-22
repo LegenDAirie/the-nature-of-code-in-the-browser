@@ -4,7 +4,7 @@
   var GLB = window.GLB = window.GLB || {};
 
   var balls = [];
-  var G = 0.1 //gravitational constant
+  var G = 0.1; //gravitational constant
 
   _.times(15, function(){
     var ball = GLB.Ball.createRandom();
@@ -31,5 +31,5 @@
       });
 
     },
-  }
+  };
 })();
