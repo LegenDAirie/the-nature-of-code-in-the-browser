@@ -1,13 +1,13 @@
 'use strict';
 
 (function(){
-  var GLB = window.GLB = window.GLB || {};
+  let GLB = window.GLB = window.GLB || {};
 
-  var G = 0.2; //gravitational constant
+  let G = 0.2; //gravitational constant
 
-  var squares = [];
+  let squares = [];
 
-  var attractor = GLB.Attractor.create({
+  let attractor = GLB.Attractor.create({
     x: GLB.canvas.width / 2,
     y: GLB.canvas.height / 2,
     radius: 5,
@@ -15,7 +15,7 @@
   });
 
   _.times(8, function(){
-    var square = GLB.Rectangle.createRandom();
+    let square = GLB.Rectangle.createRandom();
     square.velocity = square.velocity.multiply(1);
     squares.push(square);
   });
@@ -23,23 +23,23 @@
   GLB.simulationLogic = {
 
     update: function(){
-      _.forEach(squares, function(square){
-
-        var attraction = attractor.calculateForce({object: square, G});
-
-        GLB.Force.applyForce({object: square, force: attraction});
-
-        square.update();
-        square.acceleration = square.acceleration.multiply(0);
-      });
+      // _.forEach(squares, function(square){
+      //
+      //   let attraction = attractor.calculateForce({object: square, G});
+      //
+      //   GLB.Force.applyForce({object: square, force: attraction});
+      //
+      //   square.update();
+      //   square.acceleration = square.acceleration.multiply(0);
+      // });
     },
 
     draw: function(){
-      _.forEach(squares, function(square){
-        square.draw();
-      });
-
-      attractor.draw();
+      // _.forEach(squares, function(square){
+      //   square.draw();
+      // });
+      //
+      // attractor.draw();
     },
   }
 })();
