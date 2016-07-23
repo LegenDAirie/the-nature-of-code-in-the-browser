@@ -22,16 +22,16 @@
   //   squares.push(square);
   // });
 
-  const rect = GLB.Rectangle.create({
-    x: GLB.canvas.width / 2,
-    y: GLB.canvas.height / 2,
-    width: 100,
-    height: 20,
-    velocity: GLB.Vector.create({}),
-    angularVelocity: GLB.Vector.create({})
-  });
-
-  rect.angularVelocity = 0.01;
+  // const rect = GLB.Rectangle.create({
+  //   x: GLB.canvas.width / 2,
+  //   y: GLB.canvas.height / 2,
+  //   width: 100,
+  //   height: 20,
+  //   velocity: GLB.Vector.create({}),
+  //   angularVelocity: GLB.Vector.create({})
+  // });
+  const rect = GLB.Rectangle.createRandom();
+  rect.angularVelocity = 0.1;
 
   GLB.simulationLogic = {
 

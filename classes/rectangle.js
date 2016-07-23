@@ -39,9 +39,9 @@
       rectangle.velocity = velocity || GLB.Vector.create({});
       rectangle.acceleration = GLB.Vector.create({});
 
-      rectangle.heading = 0;
-      rectangle.angularVelocity = angularVelocity || 0;
-      rectangle.angularAcceleration = 0;
+      rectangle.heading = 0;                            //convert these to vectors
+      rectangle.angularVelocity = angularVelocity || 0; //convert these to vectors
+      rectangle.angularAcceleration = 0;                //convert these to vectors
 
       rectangle.width = width;
       rectangle.height = height || width;
@@ -63,8 +63,8 @@
 
       let x        = _.random(0, GLB.canvas.width);
       let y        = _.random(0, GLB.canvas.height);
-      let velocity = 0;
-      let angularVelocity = 0;
+      let velocity = GLB.Vector.createRandom();
+      let angularVelocity = GLB.Vector.createRandom();
 
       return GLB.Rectangle.create({x, y, width, height, velocity, angularVelocity});
     }
