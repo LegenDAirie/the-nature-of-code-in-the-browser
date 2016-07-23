@@ -24,7 +24,10 @@
   GLB.simulationLogic = {
 
     init: function() {
-
+      window.addEventListener('resize', function() {
+        middleX = GLB.canvas.width / 2;
+        middleY = GLB.canvas.height / 2;
+      });
     },
 
     update: function() {
