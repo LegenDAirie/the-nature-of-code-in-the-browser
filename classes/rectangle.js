@@ -6,9 +6,15 @@
   const RECTANGLE_PROTOTYPE = {
 
     draw: function() {
+
     },
 
     update: function() {
+      this.velocity = this.velocity + this.acceleration;
+      this.location = this.location + this.velocity
+
+      this.angularVelocity = this.angularVelocity + this.angularAcceleration;
+      this.heading = this.heading + this.angularVelocity;
     },
   };
 
