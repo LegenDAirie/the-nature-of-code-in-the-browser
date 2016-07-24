@@ -47,6 +47,8 @@
       rectangle.height = height || width;
       rectangle.mass = width * height;
 
+      rectangle.radius = Math.sqrt(((width / 2) * (width / 2)) + ((height / 2) * (height / 2)));
+
       let r = color && color.r || Math.floor(Math.random() * 255);
       let g = color && color.g || Math.floor(Math.random() * 255);
       let b = color && color.b || Math.floor(Math.random() * 255);
