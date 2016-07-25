@@ -62,6 +62,10 @@
 
     returnNewCopy: function(){
       return GLB.Vector.create({x: this.x, y: this.y});
+    },
+
+    toAngle: function() {
+      return Math.atan2(this.x / this.y);
     }
   };
 

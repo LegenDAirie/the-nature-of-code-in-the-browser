@@ -8,7 +8,7 @@
     draw: function() {
       GLB.context.save();
       GLB.context.translate(this.location.x, this.location.y);
-      GLB.context.rotate(this.heading);// by heading
+      GLB.context.rotate(this.heading.toAngle());// by heading
 
       GLB.Draw.rectangle({
         startX: -this.width / 2,
@@ -26,8 +26,8 @@
       this.velocity = this.velocity.add(this.acceleration);
       this.location = this.location.add(this.velocity);
 
-      this.angularVelocity = this.angularVelocity + this.angularAcceleration;
-      this.heading = this.heading + this.angularVelocity;
+      this.angularVelocity = this.angularVelocity.add(this.angularAcceleration);
+      this.heading = this.heading.add(this.angularVelocity);
     },
   };
 
@@ -39,9 +39,9 @@
       rectangle.velocity = velocity || GLB.Vector.create({});
       rectangle.acceleration = GLB.Vector.create({});
 
-      rectangle.heading = 0;                            //convert these to vectors
-      rectangle.angularVelocity = angularVelocity || 0; //convert these to vectors
-      rectangle.angularAcceleration = 0;                //convert these to vectors
+      rectangle.heading = GLB.Vector.create({x: 0, y: 1});
+      rectangle.angularVelocity = angularVelocity || GLB.Vector.create({});
+      rectangle.angularAcceleration = GLB.Vector.create({});
 
       rectangle.width = width;
       rectangle.height = height || width;
