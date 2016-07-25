@@ -65,8 +65,8 @@
     },
 
     createRandom: function() {
-      let width    = _.random(30, 100);
-      let height    = _.random(30, 100);
+      let width    = _.random(15, 50);
+      let height    = _.random(15, 50);
 
       let x        = _.random(0, GLB.canvas.width);
       let y        = _.random(0, GLB.canvas.height);
