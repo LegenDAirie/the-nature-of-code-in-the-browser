@@ -26,9 +26,14 @@
       this.velocity = this.velocity.add(this.acceleration);
       this.location = this.location.add(this.velocity);
 
-      this.angularVelocity = this.angularVelocity.add(this.angularAcceleration);
-      this.heading = this.heading.add(this.angularVelocity);
+      this.angularVelocity = this.angularVelocity + this.angularAcceleration;
+      this.calcHeading();
     },
+
+    calcHeading: function () {
+      let angle = this.heading.toAngle() + this.angularVelocity;
+      this.heading = GLB.Vector.create({x: Math.cos(angle), y: Math.sin(angle)});
+    }
   };
 
   GLB.Rectangle = {
@@ -40,8 +45,8 @@
       rectangle.acceleration = GLB.Vector.create({});
 
       rectangle.heading = GLB.Vector.create({x: 0, y: 1});
-      rectangle.angularVelocity = angularVelocity || GLB.Vector.create({});
-      rectangle.angularAcceleration = GLB.Vector.create({});
+      rectangle.angularVelocity = angularVelocity || 0;
+      rectangle.angularAcceleration = 0;
 
       rectangle.width = width;
       rectangle.height = height || width;

@@ -4,7 +4,7 @@
   let GLB = window.GLB = window.GLB || {};
 
   const rect = GLB.Rectangle.createRandom();
-  rect.angularVelocity = 0.1;
+  rect.angularVelocity = 0.05;
 
   GLB.simulationLogic = {
 

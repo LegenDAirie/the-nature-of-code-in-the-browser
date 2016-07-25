@@ -27,6 +27,7 @@
       rect.acceleration = rect.acceleration.multiply(0.1);
       rect.velocity = rect.velocity.limit(topSpeed);
       rect.heading = rect.velocity;
+      console.log(rect.heading.toAngle())
       rect.update();
     },
 

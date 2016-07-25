@@ -33,7 +33,6 @@
 
     update: function() {
       angularVelocity = angularVelocity + angularAcceleration;
-      console.log(angularVelocity);
       angle = angle + angularVelocity;
 
       if (angularVelocity > 0.1) {
