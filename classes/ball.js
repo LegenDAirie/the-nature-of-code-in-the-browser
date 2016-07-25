@@ -10,13 +10,17 @@
     },
 
     draw: function(){
+      GLB.context.save();
+      GLB.context.translate(this.location.x, this.location.y);
 
       GLB.Draw.circle({
-        x:      this.location.x,
-        y:      this.location.y,
+        x:      0,
+        y:      0,
         radius: this.radius,
         color:  this.color
       });
+
+      GLB.context.restore();
     }
   }
 
@@ -24,7 +28,7 @@
     create: function({ x, y, radius, velocity, color }){
       var ball = Object.create(BALL_PROTOTYPE);
 
-      ball.location     = GLB.Vector.create({x: x, y: y});
+      ball.location     = GLB.Vector.create({x, y});
       ball.velocity     = velocity || GLB.Vector.create({x: 0, y: 0});
       ball.acceleration = GLB.Vector.create({x: 0, y: 0});
       ball.radius       = radius || 20;
