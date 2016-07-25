@@ -8,7 +8,7 @@
     draw: function() {
       GLB.context.save();
       GLB.context.translate(this.location.x, this.location.y);
-      GLB.context.rotate(this.heading.toAngle());// by heading
+      GLB.context.rotate(this.heading.toAngle());
 
       GLB.Draw.rectangle({
         startX: -this.width / 2,

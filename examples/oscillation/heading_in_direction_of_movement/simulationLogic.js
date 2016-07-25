@@ -25,8 +25,9 @@
       rect.acceleration = mouse.subtract(rect.location);
       rect.acceleration = rect.acceleration.normalize();
       rect.acceleration = rect.acceleration.multiply(0.1);
-      rect.update();
       rect.velocity = rect.velocity.limit(topSpeed);
+      rect.heading = rect.velocity;
+      rect.update();
     },
 
     draw: function(){
