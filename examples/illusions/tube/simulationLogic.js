@@ -13,7 +13,7 @@
   const ellipses = [];
 
   const radius = 30;
-  const numberOfBallsOnScreen = GLB.canvas.width / (radius / 2);
+  const numberOfBallsOnScreen = GLB.canvas.width / (radius / 4);
 
   let locationX = 0;
 
@@ -29,7 +29,7 @@
     ellipse.startingAngle = angle;
 
     ellipses.push(ellipse);
-    locationX = locationX + (radius / 2);
+    locationX = locationX + (radius / 4);
     angle = angle + 1;
   });
 
