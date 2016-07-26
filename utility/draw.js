@@ -52,6 +52,23 @@
       }
     };
 
+    var ellipse = function({ x, y, radiusX, radiusY, rotation = 0, color }) {
+      context.beginPath();
+      context.fillStyle = color;
+      context.ellipse(
+        x,
+        y,
+        radiusX,
+        radiusY,
+        0,
+        0,
+        Math.PI * 2
+      );
+
+      context.stroke();
+      context.fill();
+    };
+
     var greyOut = function(){
       GLB.Draw.rectangle({
         startX: 0,
@@ -62,12 +79,14 @@
       });
     };
 
+
     return {
       circle,
       text,
       line,
       rectangle,
-      greyOut
+      greyOut,
+      ellipse
     }
   }
 
