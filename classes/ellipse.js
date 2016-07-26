@@ -11,12 +11,9 @@
       GLB.context.rotate(this.heading.toAngle());
 
       GLB.Draw.ellipse({
-        x: ,
-        y: ,
-        radiusX: ,
-        radiusY:,
-        rotation: ,
-        color:
+        radiusX: this.majorAxis,
+        radiusY: this.minorAxis,
+        color: this.color
       });
 
       GLB.context.restore();
