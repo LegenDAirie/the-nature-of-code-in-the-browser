@@ -26,7 +26,7 @@
 
     balls.push(ball);
     locationX = locationX + (radius / 2);
-    angle = angle + 0.05;
+    angle = angle + 1;
   });
 
 
