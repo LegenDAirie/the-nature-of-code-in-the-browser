@@ -34,7 +34,7 @@
         ball.location.x = ball.actualPosition.x * k + (GLB.canvas.width / 2);
         ball.location.y = ball.actualPosition.y * k + (GLB.canvas.height / 2);
 
-        ball.radius = (1 - ball.actualPosition.z / maxDepth) * 10;
+        ball.radius = (1 - ball.actualPosition.z / maxDepth) * 5;
 
         resetBall(ball);
 
