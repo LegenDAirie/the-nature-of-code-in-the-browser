@@ -7,7 +7,7 @@
 
     var context = GLB.context;
 
-    var circle = function({ x, y, radius, color }){
+    var circle = function({ x = 0, y = 0, radius, color }){
 
       context.beginPath();
       context.fillStyle = color;
@@ -52,7 +52,7 @@
       }
     };
 
-    var ellipse = function({ x, y, radiusX, radiusY, rotation = 0, color }) {
+    var ellipse = function({ x = 0, y = 0, radiusX, radiusY, rotation = 0, color }) {
       context.beginPath();
       context.fillStyle = color;
       context.ellipse(
